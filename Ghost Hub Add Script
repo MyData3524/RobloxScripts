@@ -279,15 +279,6 @@ else
       Body = game.HttpService:JSONEncode(Table)
    })
    ---
-   
-   data.Scripts["Script"..ScriptID + 1] = {
-     ["Date"] = Table.Date,
-     ["Description"] = Table.Description,
-     ["Script"] = Table.Script,
-     ["Script_Title"] = Table["Script_Title"],
-     ["User_ID"] = Table["User_ID"],
-     ["Username"] = Table.Date
-   }
         
    ---Update Script ID in Database
    local Folder = "Current_Script_ID"
