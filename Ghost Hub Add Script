@@ -1,4 +1,4 @@
-local Secret = "RNSEIvxOwJbuwMi6ODcJHnNJO6l8RhSjS387tXd1"
+local Secret = "55ZfshjeiD733rRfldviXXEGkkHYnlZhSu85YA86"
 
 --[[ Check User if is in server dectector
 local InServer = IsInServer(User_ID_Here) --use this to detect if user is in server
@@ -239,6 +239,7 @@ end
 
 
 ---Duplicated Post Detector Function
+local data = nil
 local function DetectDuplicate(userId, title, script, description)
  if data == nil then
     local database = GhostHub_More_Database_URL..".json"
@@ -327,6 +328,15 @@ else
    })
    ---
    
+   data.Scripts["Script"..ScriptID + 1] = {
+     ["Date"] = Table.Date,
+     ["Description"] = Table.Description,
+     ["Script"] = Table.Script,
+     ["Script_Title"] = Table["Script_Title"],
+     ["User_ID"] = Table["User_ID"],
+     ["Username"] = Table.Date
+   }
+        
    ---Update Script ID in Database
    local Folder = "Current_Script_ID"
    local database = GhostHub_More_Database_URL..Folder..".json?auth="..Secret
