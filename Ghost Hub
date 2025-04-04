@@ -4276,7 +4276,7 @@ function GetMoreScript()
  else
     MoreScripts = 20000
  end
- local SlotLimit = 2080
+ local SlotLimit = 2030
  local SlotUsed = 0
  MSButtonPosX = 0
  MSButtonPosZ = 0.001
@@ -4311,8 +4311,8 @@ function GetMoreScript()
          if MoreScriptSearch.Text == "" or MoreScriptSearch.Text ~= "" and ScriptTitle.find(string.lower(ScriptTitle), string.lower(MoreScriptSearch.Text)) then
             if IsRestricted(data.Scripts["Script"..MoreScripts]["User_ID"]) == false then
                AddMoreScriptButton(MoreScripts, ScriptTitle, data.Scripts["Script"..MoreScripts]["Script"], data.Scripts["Script"..MoreScripts]["Description"], data.Scripts["Script"..MoreScripts]["User_ID"], data.Scripts["Script"..MoreScripts].Username, data.Scripts["Script"..MoreScripts].Date)
+               SlotUsed += 1
             end
-            SlotUsed += 1
             MoreScripts -= 1
          elseif MoreScriptSearch.Text ~= "" and not ScriptTitle.find(string.lower(ScriptTitle), string.lower(MoreScriptSearch.Text)) then
             MoreScripts -= 1
