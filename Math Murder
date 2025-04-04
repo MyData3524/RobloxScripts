@@ -1,0 +1,187 @@
+--[[ Place ID With Dialog2 Detect Method
+CheckGamePlace(7981626683) --use this to check the gameplace is right
+]]
+loadstring(game:HttpGet('https://raw.githubusercontent.com/MainScripts352/MainScripts352/refs/heads/main/Check%20Game%20PlaceId%20Source'))()
+CheckGamePlace(127707120843339)
+
+
+local NotificationScript, isSupported = pcall(function()
+local CoreGui = game:GetService("StarterGui")
+
+CoreGui:SetCore("SendNotification", {
+    Title = "Script Made By",
+    Text = "GhostPlayer",
+    Icon = "rbxassetid://29819383",
+    Duration = 2.5,
+})
+end)
+
+
+
+---Admin Detector in Server
+loadstring(game:HttpGet('https://raw.githubusercontent.com/MainScripts352/MainScripts352/main/Admin'))()
+---
+
+
+
+
+
+---Block Screen Operator
+local BlockScreen = false
+game:GetService("RunService").Heartbeat:Connect(function()
+if BlockScreen == true and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+   if workspace.Map.Functional.SpawnedChairs:FindFirstChild(game.Players.LocalPlayer.Name) then
+      workspace.Map.Functional.SpawnedChairs[game.Players.LocalPlayer.Name].PlayerPos.PlayerWeld.Enabled = false
+   end
+   game.Players.LocalPlayer.Character.Humanoid.Sit = false
+   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Map.Functional.Screen.CFrame * CFrame.new(-0.4,2,-4.25) * CFrame.Angles(math.rad(0),math.rad(90),math.rad(0))
+end
+end)
+---
+
+
+
+---Auto Get Box Operator
+local AutoGetBox = false
+game:GetService("RunService").RenderStepped:Connect(function()
+if AutoGetBox == true then
+   for i,v in pairs(workspace:GetDescendants()) do
+     if v.Name == "Root" and v.Parent.Name == "LetterModel" then
+        v.CanCollide = false
+        v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+     end
+   end
+end
+end)
+---
+
+
+
+---Auto Say Word Operator
+local AutoSayAnswer = false
+local Current_Answer = nil
+game:GetService("RunService").RenderStepped:Connect(function()
+local Current_Question = workspace.Map.Functional.Screen.SurfaceGui.MainFrame.MainGameContainer.MainTxtContainer.QuestionText.Text
+if string.find(Current_Question, "=") then
+   Current_Question = string.gsub(Current_Question, "=", "")
+end
+if string.find(Current_Question, "x") then
+   Current_Question = string.gsub(Current_Question, "x", "*")
+end
+local Answer = loadstring("return "..Current_Question)()
+   
+if AutoSayAnswer == true and Current_Answer ~= Answer then
+   Current_Answer = Answer
+   if game:GetService("TextChatService").TextChannels.RBXGeneral then
+      game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(Answer)
+   else
+      game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(Answer, "All")
+   end
+end
+end)
+---
+
+
+
+---Auto Type Operator
+local TypeSpeed = 0.05
+local AutoType = false
+local BetterLoopOperator = false
+game:GetService("RunService").RenderStepped:Connect(function()
+if AutoType == true and BetterLoopOperator == false and game:GetService("Players").LocalPlayer.PlayerGui.MainGui.GameFrame.MobileKeyboardContainer.Visible == true then
+   BetterLoopOperator = true
+   local Current_Question = workspace.Map.Functional.Screen.SurfaceGui.MainFrame.MainGameContainer.MainTxtContainer.QuestionText.Text
+   if string.find(Current_Question, "=") then
+      Current_Question = string.gsub(Current_Question, "=", "")
+   end
+   if string.find(Current_Question, "x") then
+      Current_Question = string.gsub(Current_Question, "x", "*")
+   end
+
+   local Answer = ""..loadstring("return "..Current_Question)()
+   local AnswerLength = string.len(Answer)
+   
+   if workspace.Map.Functional.Screen.SurfaceGui.MainFrame.MainGameContainer.MainTxtContainer.TypingText.Text ~= "" then
+      repeat
+        for _, connection in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.MainGui.GameFrame.MobileKeyboardContainer.ButtonContainer.BackspaceButton.Button.MouseButton1Click)) do
+          connection.Function()
+        end
+        if TypeSpeed ~= 0 then
+           wait(TypeSpeed)
+        end
+      until workspace.Map.Functional.Screen.SurfaceGui.MainFrame.MainGameContainer.MainTxtContainer.TypingText.Text == ""
+   end
+   local ButtonClicked = 0
+   repeat
+     if TypeSpeed ~= 0 then
+        wait(TypeSpeed)
+     end
+     ButtonClicked += 1
+     for _, connection in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.MainGui.GameFrame.MobileKeyboardContainer.KeysContainer.Row1[Answer:sub(ButtonClicked, ButtonClicked)].Button.MouseButton1Click)) do
+       connection.Function()
+     end
+   until ButtonClicked == AnswerLength
+   if TypeSpeed ~= 0 then
+      wait(TypeSpeed)
+   end
+   for _, connection in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.MainGui.GameFrame.MobileKeyboardContainer.ButtonContainer.SubmitButton.Button.MouseButton1Click)) do
+     connection.Function()
+   end
+   while game:GetService("Players").LocalPlayer.PlayerGui.MainGui.GameFrame.MobileKeyboardContainer.Visible == true do
+     task.wait()
+   end
+   BetterLoopOperator = false 
+end
+end)
+---
+
+
+local Library = loadstring(Game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wizard"))()
+local PhantomForcesWindow = Library:NewWindow("Math Murder")
+local Folder1 = PhantomForcesWindow:NewSection("Main")
+
+Folder1:CreateDropdown("Type Speed", {"Very Fast", "Fast", "Slow", "Very Slow"}, 2, function(choosedtext)
+if choosedtext == "Very Fast" then
+   TypeSpeed = 0
+elseif choosedtext == "Fast" then
+   TypeSpeed = 0.3
+elseif choosedtext == "Slow" then
+   TypeSpeed = 0.8
+elseif choosedtext == "Very Slow" then
+   TypeSpeed = 1.3
+end
+end)
+
+Folder1:CreateToggle("Auto Answer", function()
+if AutoType == false then
+   AutoType = true
+else
+   AutoType = false
+end
+end)
+
+Folder1:CreateToggle("Auto Say Answer", function()
+if AutoSayAnswer == false then
+   AutoSayAnswer = true
+else
+   AutoSayAnswer = false
+end
+end)
+
+Folder1:CreateToggle("Auto Get Coin", function()
+if AutoGetBox == false then
+   AutoGetBox = true
+else
+   AutoGetBox = false
+end
+end)
+
+Folder1:CreateToggle("Block Screen", function()
+if BlockScreen == false then
+   BlockScreen = true
+   workspace[game.Players.LocalPlayer.Name].Animate.Disabled = true
+else
+   BlockScreen = false
+   workspace[game.Players.LocalPlayer.Name].Animate.Disabled = false
+end
+end)

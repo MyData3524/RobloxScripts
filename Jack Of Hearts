@@ -1,0 +1,167 @@
+--[[ Place ID With Dialog2 Detect Method
+CheckGamePlace(7981626683) --use this to check the gameplace is right
+]]
+loadstring(game:HttpGet('https://raw.githubusercontent.com/MainScripts352/MainScripts352/refs/heads/main/Check%20Game%20PlaceId%20Source'))()
+CheckGamePlace(12617342555, 12617349959)
+--
+
+local NotificationScript, isSupported = pcall(function()
+local CoreGui = game:GetService("StarterGui")
+
+CoreGui:SetCore("SendNotification", {
+    Title = "Script Made By",
+    Text = "GhostPlayer",
+    Icon = "rbxassetid://29819383",
+    Duration = 2.5,
+})
+end)
+
+
+---Admin Detector in Server
+loadstring(game:HttpGet('https://raw.githubusercontent.com/MainScripts352/MainScripts352/main/Admin'))()
+---
+
+
+---Ghost Gui UI Library
+loadstring(game:HttpGet('https://raw.githubusercontent.com/GhostPlayer352/UI-Library/refs/heads/main/Ghost%20Gui'))()
+game.CoreGui.GhostGui.MainFrame.Title.Text = "Jack Of Hearts"
+---
+
+
+---Detect Symbol Function
+function DetectSymbol(plr)
+ if plr.Character.Collar:FindFirstChild("Symbol") then
+    local Symbol = plr.Character.Collar:FindFirstChild("Symbol").MeshId
+    if Symbol == "rbxassetid://12316001004" then
+       return "Diamond"
+    elseif Symbol == "rbxassetid://12316000989" then
+       return "Heart"
+    elseif Symbol == "rbxassetid://12316001012" then
+       return "Spade"
+    elseif Symbol == "rbxassetid://12316001042" then
+       return "Club"
+    end
+ end
+end
+---
+
+
+
+
+---Get Full Name or Displayname of Player Function
+function GetPlayerFullName(String)
+ local Found = {}
+ for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+   if v.Name:lower():sub(1, #String) == String:lower() or v.DisplayName:lower():sub(1, #String) == String:lower() then
+      table.insert(Found,v)
+   end
+ end
+ return Found 
+end
+---
+
+
+
+PlayerTextBox = AddContent("TextBox","Player Name")
+PlayerTextBox.FocusLost:Connect(function()
+if PlayerTextBox.Text ~= "" then
+   PlayerTextBox.Text = unpack(GetPlayerFullName(PlayerTextBox.Text)).Name
+end
+end)
+
+
+AddContent("TextButton", "Reveal Symbol", [[
+local Message = PlayerTextBox.Text.." you're "..DetectSymbol(game.Players[PlayerTextBox.Text])
+if game:GetService("TextChatService").TextChannels.RBXGeneral then
+   game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(Message)
+else
+   game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(Message, "All")
+end
+]])
+
+
+
+AddContent("TextButton", "Reveal All Symbols", [[
+for _, v in pairs(game.Players:GetPlayers()) do 
+  if v.Name ~= game.Players.LocalPlayer.Name and v.Character:FindFirstChild("HumanoidRootPart") and v.Character:FindFirstChild("Collar") then
+     local Message = v.Name.." you're "..DetectSymbol(game.Players[v.Name])
+     if game:GetService("TextChatService").TextChannels.RBXGeneral then
+        game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(Message)
+     else
+        game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(Message, "All")
+     end
+     wait(0.5)
+  end
+end
+]])
+
+
+AddContent("Switch", "Esp Players", [[
+EspPlayerSymbols = true
+EspPlayerSymbolsOperator = false
+]],[[
+EspPlayerSymbols = false
+EspPlayerSymbolsOperator = false
+for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+  if v ~= game:GetService("Players").LocalPlayer and v.Character.Head:FindFirstChild("Symbol Esp") then
+     v.Character.Head:FindFirstChild("Symbol Esp"):Destroy()
+  end
+end
+]])
+
+
+local TextLabel = AddContent("TextLabel")
+TextLabel.Text = "Symbol"
+
+
+
+
+---Esp Operator
+local gui = Instance.new("BillboardGui")
+local esp = Instance.new("TextLabel",gui)
+
+gui.Name = "Symbol Esp";
+gui.ResetOnSpawn = false
+gui.AlwaysOnTop = true;
+gui.LightInfluence = 0;
+gui.Size = UDim2.new(1.75, 0, 1.75, 0);
+
+esp.BackgroundColor3 = Color3.fromRGB(0,0,255);
+esp.Text = ""
+esp.Size = UDim2.new(0.0001, 0.00001, 0.0001, 0.00001);
+esp.BorderSizePixel = 4;
+esp.BorderColor3 = Color3.new(1,1,1)
+esp.BorderSizePixel = 0
+esp.Font = "GothamSemibold"
+esp.TextSize = 12
+esp.TextColor3 = Color3.new(1,1,1)
+           
+EspPlayerSymbols = false
+EspPlayerSymbolsOperator = false
+game:GetService('RunService').RenderStepped:connect(function()
+if EspPlayerSymbols == true and EspPlayerSymbolsOperator == false and game.Players.LocalPlayer.Character:FindFirstChild("Collar") then
+   EspPlayerSymbolsOperator = true
+   for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+     if v ~= game:GetService("Players").LocalPlayer and v.Character:FindFirstChild("HumanoidRootPart") and v.Character:FindFirstChild("Collar") then
+        local PlayerSymbol = DetectSymbol(v)
+        if v.Character.Head:FindFirstChild("Symbol Esp") then
+           v.Character.Head:FindFirstChild("Symbol Esp"):Destroy()
+        end
+        esp.Text = ""..v.Name.." ("..PlayerSymbol..")"
+        gui:Clone().Parent = v.Character.Head
+     end
+   end
+   wait(2)
+   EspPlayerSymbolsOperator = false
+end
+end)
+---
+
+
+
+---Get Symbol Operator
+game:GetService('RunService').RenderStepped:connect(function()
+if game.Players.LocalPlayer.Character.Collar:FindFirstChild("Symbol") then
+   TextLabel.Text = DetectSymbol(game.Players.LocalPlayer)
+end
+end)

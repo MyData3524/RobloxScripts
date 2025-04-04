@@ -1,0 +1,56 @@
+local NotificationScript, isSupported = pcall(function()
+local CoreGui = game:GetService("StarterGui")
+
+CoreGui:SetCore("SendNotification", {
+    Title = "Script Made By",
+    Text = "GhostPlayer",
+    Icon = "rbxassetid://29819383",
+    Duration = 2.5,
+})
+end)
+
+local AntiBang = false
+game:GetService("RunService").RenderStepped:Connect(function()
+if AntiBang == true then
+   for _, v in pairs(game.Players:GetPlayers()) do 
+     if v.Name ~= game.Players.LocalPlayer.Name and (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.Character.HumanoidRootPart.Position).Magnitude <= 1.25 then
+        workspace.FallenPartsDestroyHeight = -1000
+        local lastCFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(0, -500, 0))
+        wait(0.7)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = lastCFrame
+        workspace.FallenPartsDestroyHeight = -500
+     end
+   end
+end
+end)
+
+local ScreenGui1 = Instance.new("ScreenGui") 
+ScreenGui1.Parent = game.CoreGui
+
+local TextButton1 = Instance.new("TextButton") 
+TextButton1.Parent = ScreenGui1
+TextButton1.BackgroundColor3 = Color3.fromRGB(0,255,0)
+TextButton1.BorderSizePixel = 1
+TextButton1.BorderColor3 = Color3.new(0,0,0)
+TextButton1.Position = UDim2.new(0.943,0,0.6)
+TextButton1.Size = UDim2.new(0.05,0,0.08)
+TextButton1.Font = Enum.Font.SourceSans
+TextButton1.TextColor3 = Color3.fromRGB(17,17,17)
+TextButton1.Text = "On"
+TextButton1.TextSize = 18
+TextButton1.TextScaled = true
+TextButton1.TextWrapped = false
+TextButton1.Draggable = true
+
+TextButton1.MouseButton1Click:Connect(function() 
+if TextButton1.Text == "On" then
+   TextButton1.Text = "Off"
+   TextButton1.BackgroundColor3 = Color3.fromRGB(255,0,0)
+   AntiBang = true
+else
+   TextButton1.Text = "On"
+   TextButton1.BackgroundColor3 = Color3.fromRGB(0,255,0)
+   AntiBang = false
+end
+end)

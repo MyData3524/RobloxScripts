@@ -1,0 +1,118 @@
+--[[ Place ID With Dialog2 Detect Method
+CheckGamePlace(7981626683) --use this to check the gameplace is right
+]]
+loadstring(game:HttpGet('https://raw.githubusercontent.com/MainScripts352/MainScripts352/refs/heads/main/Check%20Game%20PlaceId%20Source'))()
+CheckGamePlace(84529258884762)
+--
+
+local NotificationScript, isSupported = pcall(function()
+local CoreGui = game:GetService("StarterGui")
+
+CoreGui:SetCore("SendNotification", {
+    Title = "Script Made By",
+    Text = "GhostPlayer",
+    Icon = "rbxassetid://29819383",
+    Duration = 2.5,
+})
+end)
+
+
+---Admin Detector in Server
+loadstring(game:HttpGet('https://raw.githubusercontent.com/MainScripts352/MainScripts352/main/Admin'))()
+---
+
+
+---Ghost Gui UI Library
+loadstring(game:HttpGet('https://raw.githubusercontent.com/GhostPlayer352/UI-Library/refs/heads/main/Ghost%20Gui'))()
+game.CoreGui.GhostGui.MainFrame.Title.Text = "Dodgeball Legends"
+---
+
+
+AddContent("Toogle", "Auto Get Ball", [[
+for i,v in pairs(workspace:GetDescendants()) do
+  if v:IsA("BasePart") and v.Name == "Ball" and v.Parent.Name == "Workspace" and v.Throw.IsPlaying == false and v.Throw.Playing == false and v.Bounce.IsPlaying == false and v.Bounce.Playing == false and v.Trail.Enabled == false and not v:FindFirstChild("Specs") and not v:FindFirstChild("ParticleEmitter") and not v:FindFirstChild("Transform") and not v:FindFirstChild("Spray") and not v:FindFirstChild("Highlight") and not v:FindFirstChild("Highlight_DEAD") then
+     firetouchinterest(v,game.Players.LocalPlayer.Character.HumanoidRootPart,1)
+     firetouchinterest(v,game.Players.LocalPlayer.Character.HumanoidRootPart,0)
+  end
+end
+]])
+
+
+AddContent("Toogle", "Auto Throw", [[
+for _, connection in pairs(getconnections(game.Players.LocalPlayer.PlayerGui.Visual.Mobile.Holder.Shoot.MouseButton1Click)) do
+  connection.Function()
+end
+]])
+
+
+CurrentAimTarget = nil
+AddContent("Toogle", "Auto Aim", [[
+for _, v in pairs(game.Players:GetPlayers()) do 
+  if v.Name ~= game.Players.LocalPlayer.Name and v.Team ~= "Lobby" and v.Team ~= game.Players.LocalPlayer.Team and v.Character.Humanoid.Health >= 1 then
+     local target = v.Character.HumanoidRootPart
+     if CurrentAimTarget then
+        if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - CurrentAimTarget.Position).Magnitude > (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - target.Position).Magnitude then
+           CurrentAimTarget = target
+        end
+     else
+        CurrentAimTarget = target
+     end
+  end
+end
+if CurrentAimTarget ~= nil then
+   if game.Players:FindFirstChild(CurrentAimTarget.Parent.Name).Character.Humanoid.Health <= 1 or not game.Players:FindFirstChild(CurrentAimTarget.Parent.Name).Character:FindFirstChild("HumanoidRootPart") then
+      CurrentAimTarget = nil
+   end
+
+   ---Check Player Stand platform
+   local rayOrigin = CurrentAimTarget.Position
+   local rayDirection = Vector3.new(0, -5, 0)
+   local raycastParams = RaycastParams.new()
+   raycastParams.FilterDescendantsInstances = {game.Players[CurrentAimTarget.Parent.Name].Character}
+   raycastParams.FilterType = Enum.RaycastFilterType.Blacklist
+   local result = workspace:Raycast(rayOrigin, rayDirection, raycastParams)
+   local PlatformStand = result.Instance.Name
+   ---
+
+   if PlatformStand == "Blue" or PlatformStand == "Red" then
+      if result.Instance.Name ~= game.Players.LocalPlayer.Team then
+         workspace.CurrentCamera.CFrame = CFrame.new(workspace.CurrentCamera.CFrame.p, CurrentAimTarget.CFrame.p)
+         CurrentAimTarget = nil
+      else
+         CurrentAimTarget = nil
+      end
+   end
+end
+]])
+
+
+AddContent("Toogle", "Walk Speed", [[
+if game.Players.LocalPlayer.Character.Humanoid.MoveDirection.Magnitude > 0 then 
+   game.Players.LocalPlayer.Character:TranslateBy(game.Players.LocalPlayer.Character.Humanoid.MoveDirection * 0.5) 
+end
+]])
+
+
+AddContent("Switch", "Teleport To Top", [[
+if not game.Workspace:FindFirstChild("Top Part") then
+   local part = Instance.new("Part")
+   part.Name = "Top Part"
+   part.Color = Color3.new(1,1,1)
+   part.Material = Enum.Material.Plastic
+   part.Transparency = 1
+   part.Position = Vector3.new(0,27,0)
+   part.Size = Vector3.new(1000,0.5,1000)
+   part.CastShadow = true
+   part.Anchored = true
+   part.CanCollide = true
+   part.Parent = workspace
+end
+if game.Workspace:FindFirstChild("Top Part") then
+   game.Workspace:FindFirstChild("Top Part").CanCollide = true
+   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position.X, 30, game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Z)
+end
+]],[[
+if game.Workspace:FindFirstChild("Top Part") then
+   game.Workspace:FindFirstChild("Top Part"):Destroy()
+end
+]])

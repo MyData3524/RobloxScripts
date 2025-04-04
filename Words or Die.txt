@@ -1,0 +1,43 @@
+--[[ Place ID With Dialog2 Detect Method
+CheckGamePlace(7981626683) --use this to check the gameplace is right
+]]
+loadstring(game:HttpGet('https://raw.githubusercontent.com/MainScripts352/MainScripts352/refs/heads/main/Check%20Game%20PlaceId%20Source'))()
+CheckGamePlace(12398420365)
+---
+
+---Get Answer Operator
+local AutoAnswer = false
+game:GetService("RunService").RenderStepped:Connect(function()
+if AutoAnswer == true then
+   local Current_Word = game:GetService("ReplicatedStorage").GameData.CurrentWord.Value
+   local Word_Length = string.len(Current_Word)
+   local Word_Clicked = 0
+   repeat
+     task.wait()
+     Word_Clicked += 1
+     local Clicked = false
+     for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.InputGui.MainFrameV2.OptionsFrame:GetChildren()) do
+       if v.ClassName == "Frame" and v.TextButton.TextLabel.Text == Current_Word:sub(Word_Clicked, Word_Clicked) and v.TextButton.Active == true and Clicked == false then
+          for _, connection in pairs(getconnections(v.TextButton.Activated)) do
+            connection.Function()
+            Clicked = true
+          end
+       end
+     end
+   until Word_Clicked == Word_Length
+end
+end)
+---
+
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/preztel/AzureLibrary/master/uilib.lua", true))()
+local AutoTab = Library:CreateTab("Words or Die!", "Script Made By Ghostplayer", true)
+
+AutoTab:CreateToggle("Auto Answer",
+ function(ssse1)
+ if AutoAnswer == false then
+    AutoAnswer = true
+ else
+    AutoAnswer = false
+ end
+end)

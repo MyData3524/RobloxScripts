@@ -1,0 +1,132 @@
+local NotificationScript, isSupported = pcall(function()
+local CoreGui = game:GetService("StarterGui")
+
+CoreGui:SetCore("SendNotification", {
+    Title = "Script Made By",
+    Text = "GhostPlayer",
+    Icon = "rbxassetid://29819383",
+    Duration = 2.5,
+})
+end)
+
+--Anti Fling Source Code
+AntiFlingActivation = false
+AntiFlingOperator = false
+local Services = setmetatable({}, {__index = function(Self, Index)
+local NewService = game.GetService(game, Index)
+if NewService then
+Self[Index] = NewService
+end
+return NewService
+end})
+
+local LocalPlayer = Services.Players.LocalPlayer
+
+local function PlayerAdded(Player)
+   local Detected = false
+   local Character;
+   local PrimaryPart;
+
+   local function CharacterAdded(NewCharacter)
+       Character = NewCharacter
+       repeat
+           wait()
+           PrimaryPart = NewCharacter:FindFirstChild("HumanoidRootPart")
+       until PrimaryPart
+       Detected = false
+   end
+
+   CharacterAdded(Player.Character or Player.CharacterAdded:Wait())
+   Player.CharacterAdded:Connect(CharacterAdded)
+   Services.RunService.Heartbeat:Connect(function()
+if AntiFlingActivation == true then
+AntiFlingOperator = false
+       if (Character and Character:IsDescendantOf(workspace)) and (PrimaryPart and PrimaryPart:IsDescendantOf(Character)) then
+           if PrimaryPart.AssemblyAngularVelocity.Magnitude > 50 or PrimaryPart.AssemblyLinearVelocity.Magnitude > 100 then
+               if Detected == false then
+                   
+               end
+               Detected = true
+               for i,v in ipairs(Character:GetDescendants()) do
+                   if v:IsA("BasePart") then
+                       v.CanCollide = false
+                       v.AssemblyAngularVelocity = Vector3.new(0, 0, 0)
+                       v.AssemblyLinearVelocity = Vector3.new(0, 0, 0)
+                       v.CustomPhysicalProperties = PhysicalProperties.new(0, 0, 0)
+                   end
+               end
+               PrimaryPart.CanCollide = false
+               PrimaryPart.AssemblyAngularVelocity = Vector3.new(0, 0, 0)
+               PrimaryPart.AssemblyLinearVelocity = Vector3.new(0, 0, 0)
+               PrimaryPart.CustomPhysicalProperties = PhysicalProperties.new(0, 0, 0)
+           end
+       end
+else
+if AntiFlingOperator == false then
+AntiFlingOperator = true
+Detected = false
+PrimaryPart.CanCollide = true
+    for i,v in ipairs(Character:GetDescendants()) do
+         if v:IsA("BasePart") then
+             v.CanCollide = true
+         end
+    end
+end
+end
+   end)
+end
+
+for i,v in ipairs(Services.Players:GetPlayers()) do
+   if v ~= LocalPlayer then
+       PlayerAdded(v)
+   end
+end
+Services.Players.PlayerAdded:Connect(PlayerAdded)
+
+local LastPosition = nil
+Services.RunService.Heartbeat:Connect(function()
+if AntiFlingActivation == true then
+   pcall(function()
+       local PrimaryPart = LocalPlayer.Character.PrimaryPart
+       if PrimaryPart.AssemblyLinearVelocity.Magnitude > 250 or PrimaryPart.AssemblyAngularVelocity.Magnitude > 250 then
+           PrimaryPart.AssemblyAngularVelocity = Vector3.new(0, 0, 0)
+           PrimaryPart.AssemblyLinearVelocity = Vector3.new(0, 0, 0)
+           PrimaryPart.CFrame = LastPosition
+       elseif PrimaryPart.AssemblyLinearVelocity.Magnitude < 50 or PrimaryPart.AssemblyAngularVelocity.Magnitude > 50 then
+           LastPosition = PrimaryPart.CFrame
+       end
+   end)
+end
+end)
+---
+
+
+local ScreenGui1 = Instance.new("ScreenGui") 
+ScreenGui1.Parent = game.CoreGui
+
+local TextButton1 = Instance.new("TextButton") 
+TextButton1.Parent = ScreenGui1
+TextButton1.BackgroundColor3 = Color3.fromRGB(0,255,0)
+TextButton1.BorderSizePixel = 1
+TextButton1.BorderColor3 = Color3.new(0,0,0)
+TextButton1.Position = UDim2.new(0.965,0,0.89)
+TextButton1.Size = UDim2.new(0.03,0,0.06)
+TextButton1.Font = Enum.Font.SourceSans
+TextButton1.TextColor3 = Color3.fromRGB(17,17,17)
+TextButton1.Text = "On"
+TextButton1.TextSize = 18
+TextButton1.TextScaled = true
+TextButton1.TextWrapped = false
+TextButton1.Draggable = true
+
+TextButton1.MouseButton1Click:Connect(function() 
+if TextButton1.Text == "On" then
+   TextButton1.Text = "Off"
+   TextButton1.BackgroundColor3 = Color3.fromRGB(255,0,0)
+   AntiFlingActivation = true
+else
+   TextButton1.Text = "On"
+   TextButton1.BackgroundColor3 = Color3.fromRGB(0,255,0)
+   AntiFlingActivation = false
+end
+end)
