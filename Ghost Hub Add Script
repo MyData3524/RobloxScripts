@@ -239,6 +239,7 @@ end
 
 
 
+
 TextButton2.MouseButton1Click:Connect(function()
 if TextBox1.Text == "" or TextBox1.Text == " " then
    RequestToastMessage("Please Add Your Script Title")
@@ -279,7 +280,7 @@ else
       Body = game.HttpService:JSONEncode(Table)
    })
    ---
-        
+   
    ---Update Script ID in Database
    local Folder = "Current_Script_ID"
    local database = GhostHub_More_Database_URL..Folder..".json?auth="..Secret
