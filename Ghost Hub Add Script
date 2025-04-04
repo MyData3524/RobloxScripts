@@ -238,52 +238,6 @@ end
 ---
 
 
----Duplicated Post Detector Function
-local data = nil
-local function DetectDuplicate(userId, title, script, description)
- if data == nil then
-    local database = GhostHub_More_Database_URL..".json"
-    local CheckDatabase, Success = pcall(function()
-    data = game.HttpService:JSONDecode(game:HttpGetAsync(database))
-    end)
- 
-    if data == nil then
-       data = {}
-    end
- 
-    ---Get More Scripts From Github And Add to the data1 Table
-    local CheckMoreScriptDB, Success = pcall(function()
-    data2 = game.HttpService:JSONDecode(game:HttpGetAsync("https://raw.githubusercontent.com/MainScripts352/MainScripts352/refs/heads/main/Ghost%20Hub%20MoreScript.txt"))
-    end)
-    if not data.Scripts then
-       data["Scripts"] = {}
-    end
-    if data2 ~= nil then
-       for key, value in pairs(data2.Scripts) do  
-         data.Scripts[key] = {
-          ["Date"] = value.Date,
-          ["Description"] = value.Description,
-          ["Script"] = value.Script,
-          ["Script_Title"] = value["Script_Title"],
-          ["User_ID"] = value["User_ID"],
-          ["Username"] = value.Username
-        }
-       end
-    end
-    ---
- end
- if data ~= nil then
-    for key, value in pairs(data.Scripts) do
-      if value["User_ID"] == userId and value["Script_Title"] == title and value["Script"] == script and value["Description"] == description then
-         return true
-      else
-         return false
-      end
-    end
- end
-end
----
-
 
 TextButton2.MouseButton1Click:Connect(function()
 if TextBox1.Text == "" or TextBox1.Text == " " then
@@ -296,8 +250,6 @@ elseif DetectBadWords(TextBox1.Text) == true or DetectBadWords(TextBox3.Text) ==
    RequestToastMessage("Inappropriate Word Found! Please Remove Bad Words", 3.5)
 elseif string.len(TextBox2.Text) >= 10000 then
    RequestToastMessage("Your Script Are So Many I Recommend to put your script in paste link before you publish it! \ Script Limit: 10,000 Bytes", 6.5)
-elseif DetectDuplicate(game.Players.LocalPlayer.UserId, TextBox1.Text, TextBox2.Text, TextBox3.Text) == true then
-   RequestToastMessage("⚠️ Spam Script Detected!")
 else
    ScreenGui1:Destroy()
    Loading = true
