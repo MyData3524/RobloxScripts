@@ -1397,7 +1397,7 @@ AddGameHubButton("Math Answer or Die",'loadstring(game:HttpGet("https://raw.gith
 AddGameHubButton("Scary Spelling","loadstring(game:HttpGet('https://raw.githubusercontent.com/MainScripts352/MainScripts352/refs/heads/main/Scary%20Spelling'))()")
 AddGameHubButton("Guess The Drawings!","loadstring(game:HttpGet('https://raw.githubusercontent.com/GhostPlayer352/Test4/refs/heads/main/Guess%20The%20Drawings!'))()")
 AddGameHubButton("Dance or Die","loadstring(game:HttpGet('https://raw.githubusercontent.com/MainScripts352/MainScripts352/refs/heads/main/Dance%20or%20Die'))()")
-AddGameHubButton("Words or Die",'loadstring(game:HttpGet("https://raw.githubusercontent.com/MyData3524/RobloxScripts/refs/heads/main/Words%20or%20Die.txt"))()')
+AddGameHubButton("Words or Die",'loadstring(game:HttpGet("https://raw.githubusercontent.com/MyData3524/RobloxScripts/refs/heads/main/Words%20or%20Die"))()')
 AddGameHubButton("Math Murder",'loadstring(game:HttpGet("https://raw.githubusercontent.com/MyData3524/RobloxScripts/refs/heads/main/Math%20Murder"))()')
 AddGameHubButton("Jack Of Hearts",'loadstring(game:HttpGet("https://raw.githubusercontent.com/MyData3524/RobloxScripts/refs/heads/main/Jack%20Of%20Hearts"))()')
 AddGameHubButton("Dodgeball Legends",'loadstring(game:HttpGet("https://raw.githubusercontent.com/MyData3524/RobloxScripts/refs/heads/main/Dodgeball%20Legends"))()')
@@ -4221,7 +4221,7 @@ end
 
 
 
-GhostHub_More_Database_URL = "https://ghosthub-more-b0daf-default-rtdb.firebaseio.com/" --ghosthub more database url
+GhostHub_More_Database_URL = "https://ghosthub-more-7bf30-default-rtdb.firebaseio.com/" --ghosthub more database url
 local MoreScripts
 local data
 local data2
@@ -4284,7 +4284,7 @@ function GetMoreScript()
  
  if MoreScripts ~= 0 then
     if MoreScriptSearch.Text == "" and data["Current_Script_ID"] ~= nil and IsRestricted(game.Players.LocalPlayer.UserId) == false and IsInServer(game.Players.LocalPlayer.UserId) == true then
-      AddMoreScriptButton(1, "Add Script", 'loadstring(game:HttpGet("https://raw.githubusercontent.com/MyData3524/RobloxScripts/refs/heads/main/Ghost%20Hub%20Add%20Script.txt"))()', "You can add your script using this script", "2568780515", "Admin", "Oct 29 2024") --This is for Add Script Button
+      AddMoreScriptButton(1, "Add Script", 'loadstring(game:HttpGet("https://raw.githubusercontent.com/MyData3524/RobloxScripts/refs/heads/main/Ghost%20Hub%20Add%20Script"))()', "You can add your script using this script", "2568780515", "Admin", "Oct 29 2024") --This is for Add Script Button
       SlotUsed += 1
     end
     
