@@ -17,6 +17,12 @@ if IsRestricted(game.Players.LocalPlayer.UserId) == true or IsInServer(game.Play
 end
 ---
 
+--[[ Restricted Scripts Detector for Ghosthub MoreScript
+local Check = ScriptRestricted("Script Here") --use this to check if script is restricted
+]]
+loadstring(game:HttpGet('https://raw.githubusercontent.com/MainScripts352/MainScripts352/refs/heads/main/Ghost%20Hub%20Script%20Restricted'))()
+---
+
 ---Bad Words Detector Function
 loadstring(game:HttpGet("https://raw.githubusercontent.com/MainScripts352/MainScripts352/refs/heads/main/Detect%20BadWords"))()
 ---
@@ -251,6 +257,8 @@ elseif DetectBadWords(TextBox1.Text) == true or DetectBadWords(TextBox3.Text) ==
    RequestToastMessage("Inappropriate Word Found! Please Remove Bad Words", 3.5)
 elseif string.len(TextBox2.Text) >= 10000 then
    RequestToastMessage("Your Script Are So Many I Recommend to put your script in paste link before you publish it! \ Script Limit: 10,000 Bytes", 6.5)
+elseif ScriptRestricted("Script Here") == true then
+   RequestToastMessage("Your Script is Restricted to Upload!")
 else
    ScreenGui1:Destroy()
    Loading = true
