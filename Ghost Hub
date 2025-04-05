@@ -563,6 +563,12 @@ local Check = IsRestricted(User ID Here) --use this to check if user is restrict
 loadstring(game:HttpGet('https://raw.githubusercontent.com/MainScripts352/MainScripts352/refs/heads/main/Ghost%20Hub%20MoreScript%20Users%20Restricted'))()
 ---
 
+--[[ Restricted Scripts Detector for Ghosthub MoreScript
+local Check = ScriptRestricted("Script Here") --use this to check if script is restricted
+]]
+loadstring(game:HttpGet('https://raw.githubusercontent.com/MainScripts352/MainScripts352/refs/heads/main/Ghost%20Hub%20Script%20Restricted'))()
+---
+
 --[[ Check User if is in server dectector
 local InServer = IsInServer(User_ID_Here) --use this to detect if user is in server
 ]]
@@ -4309,7 +4315,7 @@ function GetMoreScript()
       if data.Scripts["Script"..MoreScripts] and data.Scripts["Script"..MoreScripts]["Script"] and data.Scripts["Script"..MoreScripts]["Description"] and data.Scripts["Script"..MoreScripts]["User_ID"] and data.Scripts["Script"..MoreScripts]["Username"] and data.Scripts["Script"..MoreScripts]["Date"] then
          local ScriptTitle = ""..data.Scripts["Script"..MoreScripts]["Script_Title"]
          if MoreScriptSearch.Text == "" or MoreScriptSearch.Text ~= "" and ScriptTitle.find(string.lower(ScriptTitle), string.lower(MoreScriptSearch.Text)) then
-            if IsRestricted(data.Scripts["Script"..MoreScripts]["User_ID"]) == false then
+            if IsRestricted(data.Scripts["Script"..MoreScripts]["User_ID"]) == false and ScriptRestricted(data.Scripts["Script"..MoreScripts]["Script"]) == false then
                AddMoreScriptButton(MoreScripts, ScriptTitle, data.Scripts["Script"..MoreScripts]["Script"], data.Scripts["Script"..MoreScripts]["Description"], data.Scripts["Script"..MoreScripts]["User_ID"], data.Scripts["Script"..MoreScripts].Username, data.Scripts["Script"..MoreScripts].Date)
                SlotUsed += 1
             end
