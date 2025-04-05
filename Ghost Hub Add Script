@@ -265,7 +265,7 @@ else
    ---Get Current Script ID in Database
    local Folder = "Current_Script_ID"
    local database = GhostHub_More_Database_URL..Folder..".json"
-   local ScriptID = game.HttpService:JSONDecode(game:HttpGetAsync(database))["Script_ID"]
+   local ScriptID = game.HttpService:JSONDecode(game:HttpGetAsync(database))["ScriptID"]
    ---
 
    ---Add Script in Database in Database
@@ -295,7 +295,7 @@ else
    local request = request or syn.request
    local Table = {}
 
-   Table["Script_ID"] = ScriptID + 1
+   Table["ScriptID"] = ScriptID + 1
  
    local send = request({
       Url = database,
