@@ -4278,7 +4278,7 @@ end
 ---Get More Scripts From Database Function
 function GetMoreScript()
  if data["Current_Script_ID"] then
-    MoreScripts = data["Current_Script_ID"]["Script_ID"]
+    MoreScripts = data["Current_Script_ID"]
  else
     MoreScripts = 20000
  end
