@@ -87,7 +87,11 @@ local function ChatWords()
               v:Destroy()
            end
          end
-         game:GetService("ReplicatedStorage").Remotes.chat:FireServer(value)
+         if game:GetService("TextChatService").TextChannels.RBXGeneral then
+            game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(value)
+         else
+            game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(value, "All")
+         end
          TextLabel1.Text = "The word was:\
 "..value
          local word_chated = false
@@ -109,7 +113,11 @@ local function ChatWords()
       end
    end
  end
- game:GetService("ReplicatedStorage").Remotes.chat:FireServer("⚠️ Word Not Found!")
+ if game:GetService("TextChatService").TextChannels.RBXGeneral then
+    game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync("⚠️ Word Not Found!")
+ else
+    game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("⚠️ Word Not Found!", "All")
+ end
 end
 
 
