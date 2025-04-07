@@ -1738,7 +1738,7 @@ if FileScriptSupported == true then
                FeedbackPost.Active = false
                FeedbackTextBox.Active = false
                local content = "```✅ 𝗚𝗵𝗼𝘀𝘁𝗵𝘂𝗯 𝗙𝗲𝗲𝗱𝗯𝗮𝗰𝗸\n\nUsername: "..game.Players.LocalPlayer.Name.."\nDisplay: "..game.Players.LocalPlayer.DisplayName.."\nUser ID: "..game.Players.LocalPlayer.UserId.."\n\nMessage: "..FeedbackTextBox.Text.."```"
-               local webhookUrl = "https://discord.com/api/webhooks/1357770936488820737/VfqcmOmYWUk8Wud8jqRgRtv8hEwoUD7j-h8VUhVELXreZOpihj7J_Lw0O-j5-I7GMyUr"
+               local webhookUrl = "https://discord.com/api/webhooks/1358640254734827672/W59dnLYOCYXNhA376u_pdUskvA3te6RRGoXaP9RnIepzIUZ97CQXalgMB8pF6LWBrw1p"
                local messageData = {["content"] = content}
                local request = request or syn.request
                local send = request({
