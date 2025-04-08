@@ -244,6 +244,19 @@ end
 ---
 
 
+--Check Script if Duplicated function
+local function CheckDupeScript(userId, script, date)
+ if ScriptsData ~= nil then
+    for key, value in pairs(ScriptsData.Scripts) do
+      if value["User_ID"] == userId and value["Script"] == script or value["Script"] == script and value["Date"] == date then
+         return true
+      end
+    end
+    return false
+ end
+end
+---
+
 
 
 TextButton2.MouseButton1Click:Connect(function()
@@ -259,6 +272,8 @@ elseif string.len(TextBox2.Text) >= 10000 then
    RequestToastMessage("Your Script Are So Many I Recommend to put your script in paste link before you publish it! \ Script Limit: 10,000 Bytes", 6.5)
 elseif ScriptRestricted(TextBox2.Text) == true then
    RequestToastMessage("Your Script is Restricted to Upload!")
+elseif CheckDupeScript(game.Players.LocalPlayer.UserId, TextBox2.Text, os.date("%B %d %Y")) == true then
+   RequestToastMessage("Duplicate Script Detected!")
 else
    ScreenGui1:Destroy()
    Loading = true
