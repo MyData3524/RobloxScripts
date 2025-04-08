@@ -245,7 +245,6 @@ end
 
 
 --Check Script if Duplicated function
-local ScriptsData
 local function CheckDupeScript(userId, script, date)
  for key, value in pairs(data.Scripts) do
    if value["User_ID"] == userId and value["Script"] == script or value["Script"] == script and value["Date"] == date then
