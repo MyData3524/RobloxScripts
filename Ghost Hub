@@ -4229,8 +4229,8 @@ end
 
 GhostHub_More_Database_URL = "https://ghosthub-more-7bf30-default-rtdb.firebaseio.com/" --ghosthub more database url
 local MoreScripts
-local data
 local data2
+data = nil
 
 ---Update Data Function
 function UpdateData()
