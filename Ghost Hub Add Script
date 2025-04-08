@@ -250,6 +250,24 @@ local function CheckDupeScript(userId, script, date)
    if value["User_ID"] == userId and value["Script"] == script or value["Script"] == script and value["Date"] == date then
       return true
    end
+   if value["Date"] == date then
+      ---Similarity Script Detector
+      local minLength = math.min(#value.Script, #script)
+      local maxLength = math.max(#value.Script, #script)
+      local matches = 0
+  
+      for i = 1, minLength do
+        if value.Script:sub(i, i) == script:sub(i, i) then
+           matches = matches + 1
+        end
+      end
+      local ratio = matches / maxLength
+      if ratio >= 0.5 then
+         print("Detected Script Similarity: "..math.floor(ratio * 100).."%")
+         return true
+      end
+      ---
+   end
  end
  return false
 end
