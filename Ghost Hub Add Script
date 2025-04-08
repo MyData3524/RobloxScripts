@@ -250,7 +250,7 @@ local function CheckDupeScript(userId, script, date)
    if value["User_ID"] == userId and value["Script"] == script or value["Script"] == script and value["Date"] == date then
       return true
    end
-   if value["Date"] == date then
+   if value["User_ID"] == userId and value["Date"] == date then
       ---Similarity Script Detector
       local minLength = math.min(#value.Script, #script)
       local maxLength = math.max(#value.Script, #script)
