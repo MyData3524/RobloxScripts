@@ -1,0 +1,1070 @@
+local NotificationScript, isSupported = pcall(function()
+local CoreGui = game:GetService("StarterGui")
+
+CoreGui:SetCore("SendNotification", {
+    Title = "Script Made By",
+    Text = "GhostPlayer",
+    Icon = "rbxassetid://29819383",
+    Duration = 2.5,
+})
+end)
+
+
+
+--[[ Request Toast Message Function
+RequestToastMessage("Hello World", 2) --Use this to request toast message notification
+]]
+loadstring(game:HttpGet("https://raw.githubusercontent.com/MainScripts352/MainScripts352/refs/heads/main/Request Toast Message"))()
+--
+
+
+---Check If Executor Supported File Script
+local FileScript = false
+local CheckFileScript, Supported = pcall(function()
+if writefile and readfile and isfile then
+   FileScript = true
+end
+end)
+---
+
+
+
+local ScreenGui1 = Instance.new("ScreenGui") 
+ScreenGui1.Parent = game.CoreGui
+ScreenGui1.Name = "Accessory Gui"
+
+local Frame1 = Instance.new("Frame") 
+Frame1.Parent = ScreenGui1
+Frame1.BackgroundColor3 = Color3.fromRGB(242,243,243)
+Frame1.BorderSizePixel = 1
+Frame1.BorderColor3 = Color3.fromRGB(17,17,17)
+Frame1.Position = UDim2.new(0.75,0,0)
+Frame1.Size = UDim2.new(0.245,0,0.7)
+Frame1.Visible = true
+Frame1.Active = true
+
+local ScrollingFrame1 = Instance.new("ScrollingFrame") 
+ScrollingFrame1.Parent = Frame1
+ScrollingFrame1.BackgroundColor3 = Color3.fromRGB(205,205,205)
+ScrollingFrame1.BorderSizePixel = 1
+ScrollingFrame1.BorderColor3 = Color3.fromRGB(17,17,17)
+ScrollingFrame1.Position = UDim2.new(0.1,0,0.1)
+ScrollingFrame1.Size = UDim2.new(0.8,0,0.8,0)
+ScrollingFrame1.CanvasSize = UDim2.new(0, 0, 2, 0)
+ScrollingFrame1.ScrollBarThickness = 1
+
+local TextButton1 = Instance.new("TextButton") 
+TextButton1.Parent = Frame1
+TextButton1.BackgroundColor3 = Color3.fromRGB(242,243,243)
+TextButton1.BorderSizePixel = 1
+TextButton1.BorderColor3 = Color3.fromRGB(17,17,17)
+TextButton1.Position = UDim2.new(-0.205,0,0)
+TextButton1.Size = UDim2.new(0.2,0,0.1)
+TextButton1.Font = Enum.Font.SourceSans
+TextButton1.TextColor3 = Color3.fromRGB(17,17,17)
+TextButton1.Text = "Save"
+TextButton1.TextSize = 18
+TextButton1.TextScaled = true
+TextButton1.TextWrapped = false
+
+local TextButton2 = TextButton1:Clone()
+TextButton2.Parent = Frame1
+TextButton2.Position = UDim2.new(-0.205,0,0.105)
+TextButton2.Text = "Load"
+
+local PlusButton = TextButton1:Clone()
+PlusButton.Parent = Frame1
+PlusButton.Position = UDim2.new(0,0,-0.105)
+PlusButton.Size = UDim2.new(0.15,0,0.1)
+PlusButton.Text = "+"
+PlusButton.Active = true
+
+local DeleteButton = PlusButton:Clone()
+DeleteButton.Parent = Frame1
+DeleteButton.BackgroundColor3 = Color3.fromRGB(255,0,0)
+DeleteButton.Position = UDim2.new(0.151,0,-0.105)
+DeleteButton.Text = "-"
+DeleteButton.Visible = false
+
+local DestroyGui = PlusButton:Clone()
+DestroyGui.Parent = Frame1
+DestroyGui.BackgroundColor3 = Color3.fromRGB(255,0,0)
+DestroyGui.Position = UDim2.new(0.85,0,-0.105)
+DestroyGui.Text = "X"
+
+local Frame2 = Instance.new("Frame") 
+Frame2.Parent = Frame1
+Frame2.BackgroundColor3 = Color3.fromRGB(242,243,243)
+Frame2.BackgroundTransparency = 1
+Frame2.Position = UDim2.new(-0.205,0,0.2)
+Frame2.Size = UDim2.new(0.2,0,0.68)
+Frame2.Visible = false
+Frame2.Active = true
+
+local TextButton3 = Instance.new("TextButton")
+TextButton3.Parent = Frame2
+TextButton3.BackgroundColor3 = Color3.fromRGB(242,243,243)
+TextButton3.BorderSizePixel = 1
+TextButton3.BorderColor3 = Color3.fromRGB(17,17,17)
+TextButton3.Position = UDim2.new(0.4,0,0.069)
+TextButton3.Size = UDim2.new(0.6,0,0.15)
+TextButton3.Font = Enum.Font.SourceSans
+TextButton3.TextColor3 = Color3.fromRGB(17,17,17)
+TextButton3.Text = "↕️"
+TextButton3.TextSize = 18
+TextButton3.TextScaled = true
+TextButton3.TextWrapped = false
+
+local TextButton4 = TextButton3:Clone()
+TextButton4.Parent = Frame2
+TextButton4.Position = UDim2.new(0.4,0,0.229)
+TextButton4.Text = "↔️"
+
+local TextButton5 = TextButton3:Clone()
+TextButton5.Parent = Frame2
+TextButton5.Position = UDim2.new(0.4,0,0.389)
+TextButton5.Text = "🔄"
+
+local TextButton6 = TextButton3:Clone()
+TextButton6.Parent = Frame2
+TextButton6.Position = UDim2.new(0.4,0,0.549)
+TextButton6.Text = "⤴️️"
+
+local TextButton7 = TextButton3:Clone()
+TextButton7.Parent = Frame2
+TextButton7.Position = UDim2.new(0.4,0,0.709)
+TextButton7.Text = "⤵️️"
+
+local TextButton8 = TextButton3:Clone()
+TextButton8.Parent = Frame2
+TextButton8.Position = UDim2.new(0.4,0,0.869)
+TextButton8.Text = "⬆️️"
+
+local TextButton9 = TextButton3:Clone()
+TextButton9.Parent = Frame2
+TextButton9.Position = UDim2.new(0.4,0,1.028)
+TextButton9.Text = "⬇️️"
+
+local TextButton10 = TextButton3:Clone()
+TextButton10.Parent = Frame2
+TextButton10.Position = UDim2.new(0.4,0,1.183)
+TextButton10.Text = "⬅️️️"
+
+local TextButton11 = TextButton3:Clone()
+TextButton11.Parent = Frame2
+TextButton11.Position = UDim2.new(0.4,0,1.338)
+TextButton11.Text = "➡️"
+
+
+
+
+
+---Add Button Function
+local Current_Button_PositionZ = 0
+local Selected = nil
+
+local function AddButton(name)
+ local TextButton = Instance.new("TextButton") 
+ TextButton.Parent = ScrollingFrame1
+ TextButton.BackgroundColor3 = Color3.fromRGB(242,243,243)
+ TextButton.BorderSizePixel = 1
+ TextButton.BorderColor3 = Color3.fromRGB(17,17,17)
+ TextButton.Position = UDim2.new(0, 0, Current_Button_PositionZ)
+ TextButton.Size = UDim2.new(1,0,0.05)
+ TextButton.Font = Enum.Font.SourceSans
+ TextButton.TextColor3 = Color3.fromRGB(17,17,17)
+ TextButton.Text = name
+ TextButton.TextSize = 18
+ TextButton.TextScaled = true
+ TextButton.TextWrapped = true
+ 
+ Current_Button_PositionZ += 0.05
+ 
+ TextButton.MouseButton1Click:Connect(function()
+ if TextButton.BackgroundColor3 == Color3.fromRGB(163,162,165) then
+    TextButton.BackgroundColor3 = Color3.fromRGB(242,243,243)
+    DeleteButton.Visible = false
+    Frame2.Visible = false
+ else
+    for key, value in pairs(ScrollingFrame1:GetChildren()) do
+      value.BackgroundColor3 = Color3.fromRGB(242,243,243)
+    end
+    TextButton.BackgroundColor3 = Color3.fromRGB(163,162,165)
+    DeleteButton.Visible = true
+    Frame2.Visible = true
+    Selected = game.Players.LocalPlayer.Character["Free Accessories"]:FindFirstChild(name)
+ end
+ end)
+end
+---
+
+
+
+
+
+---Get Accessory Type Function
+local function GetAccesoryType(accessoryId)
+ local accessory = nil
+ local GetAsset, Success= pcall(function()
+ accessory = game:GetService("MarketplaceService"):GetProductInfo(accessoryId)
+ end)
+ 
+ if accessory == nil then
+    return nil
+ end
+ 
+ if accessory.AssetTypeId == Enum.AssetType.HairAccessory.Value then
+    return "Hair"
+ elseif accessory.AssetTypeId == Enum.AssetType.Hat.Value then
+    return "Hat"
+elseif accessory.AssetTypeId == Enum.AssetType.FaceAccessory.Value then
+    return "Face"
+ elseif accessory.AssetTypeId == Enum.AssetType.NeckAccessory.Value then
+    return "Neck"
+ elseif accessory.AssetTypeId == Enum.AssetType.ShoulderAccessory.Value then
+    return "Shoulder"
+ elseif accessory.AssetTypeId == Enum.AssetType.FrontAccessory.Value then
+    return "Front"
+ elseif accessory.AssetTypeId == Enum.AssetType.BackAccessory.Value then
+    return "Back"
+ elseif accessory.AssetTypeId == Enum.AssetType.WaistAccessory.Value then
+    return "Waist"
+ else
+    return nil
+ end
+end
+---
+
+
+---Wear Accessory Function
+local AccessoriesData = {}
+local function WearAccessory(assetId, cframe, angle)
+ local accessoryType = GetAccesoryType(assetId)
+ if accessoryType == "Hair" or accessoryType == "Hat" or accessoryType == "Face" then
+    accessoryWeld = game.Players.LocalPlayer.Character.Head
+ else
+    if game.Players.LocalPlayer.Character.Humanoid.RigType == Enum.HumanoidRigType.R15 then
+       accessoryWeld = game.Players.LocalPlayer.Character.UpperTorso
+    else
+       accessoryWeld = game.Players.LocalPlayer.Character.Torso
+    end
+ end
+
+ if not game.Players.LocalPlayer.Character:FindFirstChild("Free Accessories") then
+    local Model = Instance.new("Model", game.Players.LocalPlayer.Character)
+    Model.Name = "Free Accessories"
+ end
+ 
+ local asset = game:GetObjects("rbxassetid://"..assetId)[1]
+ game.Players.LocalPlayer.Character.Archivable = true
+
+ hat = Instance.new("Part", game.Players.LocalPlayer.Character:FindFirstChild("Free Accessories"))
+ hat.Name = game:GetService("MarketplaceService"):GetProductInfo(assetId).Name
+ hat.Size = Vector3.new(1,1,1)
+ hat.CanCollide = false
+ hat.Anchored = false
+
+ hatmesh = Instance.new("SpecialMesh", hat)
+ hatmesh.TextureId = asset.Handle.SpecialMesh.TextureId
+ hatmesh.MeshId = asset.Handle.SpecialMesh.MeshId
+ hatmesh.Scale = Vector3.new(1, 1 ,1)
+
+ HatWeld = Instance.new("Weld", hatmesh)
+ HatWeld.Part0 = game.Players.LocalPlayer.Character["Head"]
+ HatWeld.Part1 = hat
+ HatWeld.C1 = CFrame.new(0,0.3,0) * CFrame.Angles(math.rad(0),math.rad(0),math.rad(0))
+ 
+ if cframe then
+    HatWeld.C1 = cframe
+ else
+    cframe = nil
+ end
+ if angle then
+    HatWeld.C0 = angle
+ else
+    angle = nil
+ end
+ 
+ local Number = Instance.new("NumberValue")
+ Number.Parent = hat
+ Number.Name = "AssetID"
+ Number.Archivable = true
+ Number.Value = assetId
+ 
+ AccessoriesData[assetId] = {
+   ["Name"] = hat.Name,
+   ["CFrame"] = cframe,
+   ["Angle"] = angle
+ }
+end
+---
+
+
+
+
+
+
+---Load Saved Accessories Function
+local function LoadSavedAccessories()
+ if FileScript == true then
+    if isfile("Saved Accessories.json") then
+       local data = game:GetService("HttpService"):JSONDecode(readfile("Saved Accessories.json"))
+       for key, value in pairs(data) do
+         if key then
+            AddButton(game:GetService("MarketplaceService"):GetProductInfo(value.AssetID).Name)
+            WearAccessory(value.AssetID, CFrame.new(unpack(value.CFrame)), CFrame.new(unpack(value.Angle)))
+         end
+       end
+    end
+ end
+end
+---
+
+
+
+
+
+
+---For ReExecute Detector Operator
+local ExecutedValue = 1
+if not workspace:FindFirstChild("Accessories Gui") then
+   local Number = Instance.new("NumberValue")
+   Number.Parent = game.workspace
+   Number.Name = "Accessories Gui"
+   Number.Archivable = true
+   Number.Value = 1
+else
+   workspace:FindFirstChild("Accessories Gui").Value += 1
+   ExecutedValue = workspace:FindFirstChild("Accessories Gui").Value
+end
+---
+
+
+
+
+---Auto Load Accessories when died Operator
+local Better_Loop_Operator = false
+game:GetService("RunService").RenderStepped:Connect(function()
+if workspace:FindFirstChild("Accessories Gui").Value == ExecutedValue and next(AccessoriesData) ~= nil and Better_Loop_Operator == false then
+   Better_Loop_Operator = true
+   if not game.Players.LocalPlayer.Character:FindFirstChild("Free Accessories") then
+      local Model = Instance.new("Model", game.Players.LocalPlayer.Character)
+      Model.Name = "Free Accessories"
+   end
+   for key, value in pairs(AccessoriesData) do
+     if key and not game.Players.LocalPlayer.Character["Free Accessories"]:FindFirstChild(value.Name) then
+        WearAccessory(key, value.CFrame, value.Angle)
+     end
+   end
+   Better_Loop_Operator = false
+end
+end)
+---
+
+
+
+
+---Add Accessory Dialog Function
+local function AddAccesoryDialog()
+ local EdittextGui = Instance.new("ScreenGui")
+ local EdittextFrame = Instance.new("Frame")
+ local EdittextFrame2 = Instance.new("Frame")
+ local EdittextLine = Instance.new("Frame")
+ local EdittextTitle = Instance.new("TextLabel")
+ local EdittextButton1 = Instance.new("TextButton")
+ local EdittextButton2 = Instance.new("TextButton")
+ local EdittextTextBox = Instance.new("TextBox")
+ local EdittextUICorner = Instance.new("UICorner")
+
+ EdittextGui.Parent = game.CoreGui
+
+ EdittextFrame.Parent = EdittextGui
+ EdittextFrame.BackgroundColor3 = Color3.new(0,0,0)
+ EdittextFrame.Transparency = 0.5
+ EdittextFrame.BorderColor3 = Color3.new(1,1,1)
+ EdittextFrame.BorderSizePixel = 0
+ EdittextFrame.Position = UDim2.new(0,0,-0.2)
+ EdittextFrame.Size = UDim2.new(1,0,1.2)
+ EdittextFrame.Active = true
+ EdittextFrame.Draggable = false
+
+ EdittextFrame2.Parent = EdittextFrame
+ EdittextFrame2.BackgroundColor3 = Color3.fromRGB(35,35,35)
+ EdittextFrame2.BorderColor3 = Color3.new(1,1,1)
+ EdittextFrame2.BorderSizePixel = 0
+ EdittextFrame2.Position = UDim2.new(0.3,0,0.35)
+ EdittextFrame2.Size = UDim2.new(0.4,0,0.4)
+ EdittextFrame2.Active = true
+ EdittextFrame2.Draggable = false
+
+ EdittextUICorner.CornerRadius = UDim.new(0.1, 0)
+ EdittextUICorner.Parent = EdittextFrame2
+
+ EdittextLine.Parent = EdittextFrame2
+ EdittextLine.BackgroundColor3 = Color3.new(0,0,0)
+ EdittextLine.BorderColor3 = Color3.new(1,1,1)
+ EdittextLine.BorderSizePixel = 2
+ EdittextLine.Position = UDim2.new(0.1,0,0.26)
+ EdittextLine.Size = UDim2.new(0.78,0,0.0000001)
+ EdittextLine.Active = true
+
+ EdittextTitle.Parent = EdittextFrame2
+ EdittextTitle.BackgroundColor3 = Color3.fromRGB(35,35,35)
+ EdittextTitle.BackgroundTransparency = 1
+ EdittextTitle.Position = UDim2.new(0.1,0,0.05)
+ EdittextTitle.Text = "Get Accessory"
+ EdittextTitle.TextColor3 = Color3.new(1,1,1)
+ EdittextTitle.Size = UDim2.new(0.8,0,0.15)
+ EdittextTitle.FontSize = Enum.FontSize.Size14
+ EdittextTitle.TextScaled = false
+ EdittextTitle.TextSize = 16
+ EdittextTitle.TextWrapped = true
+ 
+ EdittextTextBox.Parent = EdittextFrame2
+ EdittextTextBox.BackgroundColor3 = Color3.new(1,1,1)
+ EdittextTextBox.BackgroundTransparency = 0
+ EdittextTextBox.Position = UDim2.new(0.1,0,0.37)
+ EdittextTextBox.Text = ""
+ EdittextTextBox.PlaceholderText = "Accessory ID Here"
+ EdittextTextBox.TextColor3 = Color3.new(0,0,0)
+ EdittextTextBox.Size = UDim2.new(0.79,0,0.25)
+ EdittextTextBox.FontSize = Enum.FontSize.Size14
+ EdittextTextBox.TextScaled = true
+ EdittextTextBox.TextSize = 8
+ EdittextTextBox.TextWrapped = true
+
+ local EdittextTextBoxPadding = Instance.new("UIPadding")
+ EdittextTextBoxPadding.PaddingTop = UDim.new(0, 5)
+ EdittextTextBoxPadding.PaddingBottom = UDim.new(0, 5)
+ EdittextTextBoxPadding.PaddingLeft = UDim.new(0, 7.5)
+ EdittextTextBoxPadding.PaddingRight = UDim.new(0, 7.5)
+ EdittextTextBoxPadding.Parent = EdittextTextBox
+
+ EdittextButton1.Parent = EdittextFrame2
+ EdittextButton1.BackgroundColor3 = Color3.new(1,1,1)
+ EdittextButton1.BackgroundTransparency = 0
+ EdittextButton1.Position = UDim2.new(0.1,0,0.7)
+ EdittextButton1.Text = "Cancel"
+ EdittextButton1.TextColor3 = Color3.new(0,0,0)
+ EdittextButton1.Size = UDim2.new(0.37,0,0.2)
+ EdittextButton1.FontSize = Enum.FontSize.Size14
+ EdittextButton1.TextScaled = true
+ EdittextButton1.TextSize = 8
+ EdittextButton1.TextWrapped = true
+
+ EdittextButton2.Parent = EdittextFrame2
+ EdittextButton2.BackgroundColor3 = Color3.new(1,1,1)
+ EdittextButton2.BackgroundTransparency = 0
+ EdittextButton2.Position = UDim2.new(0.52,0,0.7)
+ EdittextButton2.Text = "Get"
+ EdittextButton2.TextColor3 = Color3.new(0,0,0)
+ EdittextButton2.Size = UDim2.new(0.37,0,0.2)
+ EdittextButton2.FontSize = Enum.FontSize.Size14
+ EdittextButton2.TextScaled = true
+ EdittextButton2.TextSize = 8
+ EdittextButton2.TextWrapped = true
+
+ EdittextButton1.MouseButton1Click:connect(function()
+ PlusButton.Active = true
+ EdittextGui:Destroy()
+ end)
+
+ EdittextButton2.MouseButton1Click:connect(function()
+ if EdittextTextBox.Text == "" then
+    RequestToastMessage("Please Add Accessory ID")
+ else
+    if GetAccesoryType(EdittextTextBox.Text) == nil then
+       RequestToastMessage("Your Asset ID is not Accesory")
+    else
+       local AssetName = game:GetService("MarketplaceService"):GetProductInfo(EdittextTextBox.Text).Name
+       local name_exist = false
+       for i,v in pairs(ScrollingFrame1:GetChildren()) do
+         if v.Text == AssetName then
+            name_exist = true
+         end
+       end
+       if name_exist == true then
+          RequestToastMessage("Accessory Already Exist")
+       else
+          EdittextGui:Destroy()
+          AddButton(AssetName)
+          WearAccessory(tonumber(EdittextTextBox.Text))
+          PlusButton.Active = true
+       end
+    end
+ end
+ end)
+end
+---
+
+
+
+
+
+---Delete Accessory Dialog Function
+local function DeleteAccessory()
+ local TextLabelGui = Instance.new("ScreenGui")
+ local TextLabelFrame = Instance.new("Frame")
+ local TextLabelFrame2 = Instance.new("Frame")
+ local TextLabelLine = Instance.new("Frame")
+ local TextLabelTitle = Instance.new("TextLabel")
+ local TextLabelButton1 = Instance.new("TextButton")
+ local TextLabelButton2 = Instance.new("TextButton")
+ local TextLabelTextBox = Instance.new("TextLabel")
+ local TextLabelUICorner = Instance.new("UICorner")
+
+ TextLabelGui.Parent = game.CoreGui
+
+ TextLabelFrame.Parent = TextLabelGui
+ TextLabelFrame.BackgroundColor3 = Color3.new(0,0,0)
+ TextLabelFrame.Transparency = 0.5
+ TextLabelFrame.BorderColor3 = Color3.new(1,1,1)
+ TextLabelFrame.BorderSizePixel = 0
+ TextLabelFrame.Position = UDim2.new(0,0,-0.2)
+ TextLabelFrame.Size = UDim2.new(1,0,1.2)
+ TextLabelFrame.Active = true
+ TextLabelFrame.Draggable = false
+
+ TextLabelFrame2.Parent = TextLabelFrame
+ TextLabelFrame2.BackgroundColor3 = Color3.fromRGB(35,35,35)
+ TextLabelFrame2.BorderColor3 = Color3.new(1,1,1)
+ TextLabelFrame2.BorderSizePixel = 0
+ TextLabelFrame2.Position = UDim2.new(0.3,0,0.35)
+ TextLabelFrame2.Size = UDim2.new(0.4,0,0.4)
+ TextLabelFrame2.Active = true
+ TextLabelFrame2.Draggable = false
+
+ TextLabelUICorner.CornerRadius = UDim.new(0.1, 0)
+ TextLabelUICorner.Parent = TextLabelFrame2
+
+ TextLabelLine.Parent = TextLabelFrame2
+ TextLabelLine.BackgroundColor3 = Color3.new(0,0,0)
+ TextLabelLine.BorderColor3 = Color3.new(1,1,1)
+ TextLabelLine.BorderSizePixel = 2
+ TextLabelLine.Position = UDim2.new(0.1,0,0.26)
+ TextLabelLine.Size = UDim2.new(0.78,0,0.0000001)
+ TextLabelLine.Active = true
+
+ TextLabelTitle.Parent = TextLabelFrame2
+ TextLabelTitle.BackgroundColor3 = Color3.fromRGB(35,35,35)
+ TextLabelTitle.BackgroundTransparency = 1
+ TextLabelTitle.Position = UDim2.new(0.1,0,0.05)
+ TextLabelTitle.Text = "Delete Accessory"
+ TextLabelTitle.TextColor3 = Color3.new(1,1,1)
+ TextLabelTitle.Size = UDim2.new(0.8,0,0.15)
+ TextLabelTitle.FontSize = Enum.FontSize.Size14
+ TextLabelTitle.TextScaled = false
+ TextLabelTitle.TextSize = 16
+ TextLabelTitle.TextWrapped = true
+ 
+ TextLabelTextBox.Parent = TextLabelFrame2
+ TextLabelTextBox.BackgroundColor3 = Color3.new(1,1,1)
+ TextLabelTextBox.BackgroundTransparency = 1
+ TextLabelTextBox.Position = UDim2.new(0.1,0,0.37)
+ TextLabelTextBox.Text = "Are you sure do you want to\ndelete this accessory?"
+ TextLabelTextBox.TextColor3 = Color3.new(1,1,1)
+ TextLabelTextBox.Size = UDim2.new(0.79,0,0.25)
+ TextLabelTextBox.FontSize = Enum.FontSize.Size14
+ TextLabelTextBox.TextScaled = true
+ TextLabelTextBox.TextSize = 8
+ TextLabelTextBox.TextWrapped = true
+
+ TextLabelButton1.Parent = TextLabelFrame2
+ TextLabelButton1.BackgroundColor3 = Color3.new(1,1,1)
+ TextLabelButton1.BackgroundTransparency = 0
+ TextLabelButton1.Position = UDim2.new(0.1,0,0.7)
+ TextLabelButton1.Text = "Cancel"
+ TextLabelButton1.TextColor3 = Color3.new(0,0,0)
+ TextLabelButton1.Size = UDim2.new(0.37,0,0.2)
+ TextLabelButton1.FontSize = Enum.FontSize.Size14
+ TextLabelButton1.TextScaled = true
+ TextLabelButton1.TextSize = 8
+ TextLabelButton1.TextWrapped = true
+
+ TextLabelButton2.Parent = TextLabelFrame2
+ TextLabelButton2.BackgroundColor3 = Color3.new(1,1,1)
+ TextLabelButton2.BackgroundTransparency = 0
+ TextLabelButton2.Position = UDim2.new(0.52,0,0.7)
+ TextLabelButton2.Text = "Delete"
+ TextLabelButton2.TextColor3 = Color3.new(0,0,0)
+ TextLabelButton2.Size = UDim2.new(0.37,0,0.2)
+ TextLabelButton2.FontSize = Enum.FontSize.Size14
+ TextLabelButton2.TextScaled = true
+ TextLabelButton2.TextSize = 8
+ TextLabelButton2.TextWrapped = true
+
+ TextLabelButton1.MouseButton1Click:connect(function()
+ TextLabelGui:Destroy()
+ end)
+
+ TextLabelButton2.MouseButton1Click:connect(function()
+ TextLabelGui:Destroy()
+ for i,v in pairs(ScrollingFrame1:GetChildren()) do
+   if v.Text == Selected.Name then
+      v:Destroy()
+   end
+ end
+ AccessoriesData[Selected.AssetID.Value] = nil
+ game.Players.LocalPlayer.Character["Free Accessories"]:FindFirstChild(Selected.Name):Destroy()
+ Selected = nil
+ Current_Button_PositionZ = 0
+ for key, value in pairs(ScrollingFrame1:GetDescendants()) do
+   value.BackgroundColor3 = Color3.fromRGB(242,243,243)
+   value.Position = UDim2.new(0,0,Current_Button_PositionZ)
+   Current_Button_PositionZ += 0.05
+ end
+ DeleteButton.Visible = false
+ Frame2.Visible = false
+ end)
+end
+---
+
+
+
+
+
+
+
+---Save Accessories Dialog Function
+local function SaveAccessoryDialog()
+ local TextLabelGui = Instance.new("ScreenGui")
+ local TextLabelFrame = Instance.new("Frame")
+ local TextLabelFrame2 = Instance.new("Frame")
+ local TextLabelLine = Instance.new("Frame")
+ local TextLabelTitle = Instance.new("TextLabel")
+ local TextLabelButton1 = Instance.new("TextButton")
+ local TextLabelButton2 = Instance.new("TextButton")
+ local TextLabelTextBox = Instance.new("TextLabel")
+ local TextLabelUICorner = Instance.new("UICorner")
+
+ TextLabelGui.Parent = game.CoreGui
+
+ TextLabelFrame.Parent = TextLabelGui
+ TextLabelFrame.BackgroundColor3 = Color3.new(0,0,0)
+ TextLabelFrame.Transparency = 0.5
+ TextLabelFrame.BorderColor3 = Color3.new(1,1,1)
+ TextLabelFrame.BorderSizePixel = 0
+ TextLabelFrame.Position = UDim2.new(0,0,-0.2)
+ TextLabelFrame.Size = UDim2.new(1,0,1.2)
+ TextLabelFrame.Active = true
+ TextLabelFrame.Draggable = false
+
+ TextLabelFrame2.Parent = TextLabelFrame
+ TextLabelFrame2.BackgroundColor3 = Color3.fromRGB(35,35,35)
+ TextLabelFrame2.BorderColor3 = Color3.new(1,1,1)
+ TextLabelFrame2.BorderSizePixel = 0
+ TextLabelFrame2.Position = UDim2.new(0.3,0,0.35)
+ TextLabelFrame2.Size = UDim2.new(0.4,0,0.4)
+ TextLabelFrame2.Active = true
+ TextLabelFrame2.Draggable = false
+
+ TextLabelUICorner.CornerRadius = UDim.new(0.1, 0)
+ TextLabelUICorner.Parent = TextLabelFrame2
+
+ TextLabelLine.Parent = TextLabelFrame2
+ TextLabelLine.BackgroundColor3 = Color3.new(0,0,0)
+ TextLabelLine.BorderColor3 = Color3.new(1,1,1)
+ TextLabelLine.BorderSizePixel = 2
+ TextLabelLine.Position = UDim2.new(0.1,0,0.26)
+ TextLabelLine.Size = UDim2.new(0.78,0,0.0000001)
+ TextLabelLine.Active = true
+
+ TextLabelTitle.Parent = TextLabelFrame2
+ TextLabelTitle.BackgroundColor3 = Color3.fromRGB(35,35,35)
+ TextLabelTitle.BackgroundTransparency = 1
+ TextLabelTitle.Position = UDim2.new(0.1,0,0.05)
+ TextLabelTitle.Text = "Save Accessories"
+ TextLabelTitle.TextColor3 = Color3.new(1,1,1)
+ TextLabelTitle.Size = UDim2.new(0.8,0,0.15)
+ TextLabelTitle.FontSize = Enum.FontSize.Size14
+ TextLabelTitle.TextScaled = false
+ TextLabelTitle.TextSize = 16
+ TextLabelTitle.TextWrapped = true
+ 
+ TextLabelTextBox.Parent = TextLabelFrame2
+ TextLabelTextBox.BackgroundColor3 = Color3.new(1,1,1)
+ TextLabelTextBox.BackgroundTransparency = 1
+ TextLabelTextBox.Position = UDim2.new(0.1,0,0.37)
+ TextLabelTextBox.Text = "Are you sure do you want to\nsave this accessories?"
+ TextLabelTextBox.TextColor3 = Color3.new(1,1,1)
+ TextLabelTextBox.Size = UDim2.new(0.79,0,0.25)
+ TextLabelTextBox.FontSize = Enum.FontSize.Size14
+ TextLabelTextBox.TextScaled = true
+ TextLabelTextBox.TextSize = 8
+ TextLabelTextBox.TextWrapped = true
+
+ TextLabelButton1.Parent = TextLabelFrame2
+ TextLabelButton1.BackgroundColor3 = Color3.new(1,1,1)
+ TextLabelButton1.BackgroundTransparency = 0
+ TextLabelButton1.Position = UDim2.new(0.1,0,0.7)
+ TextLabelButton1.Text = "Cancel"
+ TextLabelButton1.TextColor3 = Color3.new(0,0,0)
+ TextLabelButton1.Size = UDim2.new(0.37,0,0.2)
+ TextLabelButton1.FontSize = Enum.FontSize.Size14
+ TextLabelButton1.TextScaled = true
+ TextLabelButton1.TextSize = 8
+ TextLabelButton1.TextWrapped = true
+
+ TextLabelButton2.Parent = TextLabelFrame2
+ TextLabelButton2.BackgroundColor3 = Color3.new(1,1,1)
+ TextLabelButton2.BackgroundTransparency = 0
+ TextLabelButton2.Position = UDim2.new(0.52,0,0.7)
+ TextLabelButton2.Text = "Save"
+ TextLabelButton2.TextColor3 = Color3.new(0,0,0)
+ TextLabelButton2.Size = UDim2.new(0.37,0,0.2)
+ TextLabelButton2.FontSize = Enum.FontSize.Size14
+ TextLabelButton2.TextScaled = true
+ TextLabelButton2.TextSize = 8
+ TextLabelButton2.TextWrapped = true
+
+ TextLabelButton1.MouseButton1Click:connect(function()
+ TextLabelGui:Destroy()
+ end)
+
+ TextLabelButton2.MouseButton1Click:connect(function()
+ TextLabelGui:Destroy()
+ local Table = {}
+ for i,v in pairs(game.Players.LocalPlayer.Character["Free Accessories"]:GetDescendants()) do
+   if v:IsA("BasePart") then
+      Table[v.Name] = {
+        ["AssetID"] = v.AssetID.Value,
+        ["CFrame"] = {v.Mesh.Weld.C1:GetComponents()},
+        ["Angle"] = {v.Mesh.Weld.C0:GetComponents()}
+      }
+   end
+ end
+ writefile("Saved Accessories.json", game:GetService("HttpService"):JSONEncode(Table))
+ RequestToastMessage("Accessories Saved!")
+ DeleteButton.Visible = false
+ Frame2.Visible = false
+ end)
+end
+---
+
+
+
+
+---Load Accessories Dialog Function
+local function LoadAccessoryDialog()
+ local TextLabelGui = Instance.new("ScreenGui")
+ local TextLabelFrame = Instance.new("Frame")
+ local TextLabelFrame2 = Instance.new("Frame")
+ local TextLabelLine = Instance.new("Frame")
+ local TextLabelTitle = Instance.new("TextLabel")
+ local TextLabelButton1 = Instance.new("TextButton")
+ local TextLabelButton2 = Instance.new("TextButton")
+ local TextLabelTextBox = Instance.new("TextLabel")
+ local TextLabelUICorner = Instance.new("UICorner")
+
+ TextLabelGui.Parent = game.CoreGui
+
+ TextLabelFrame.Parent = TextLabelGui
+ TextLabelFrame.BackgroundColor3 = Color3.new(0,0,0)
+ TextLabelFrame.Transparency = 0.5
+ TextLabelFrame.BorderColor3 = Color3.new(1,1,1)
+ TextLabelFrame.BorderSizePixel = 0
+ TextLabelFrame.Position = UDim2.new(0,0,-0.2)
+ TextLabelFrame.Size = UDim2.new(1,0,1.2)
+ TextLabelFrame.Active = true
+ TextLabelFrame.Draggable = false
+
+ TextLabelFrame2.Parent = TextLabelFrame
+ TextLabelFrame2.BackgroundColor3 = Color3.fromRGB(35,35,35)
+ TextLabelFrame2.BorderColor3 = Color3.new(1,1,1)
+ TextLabelFrame2.BorderSizePixel = 0
+ TextLabelFrame2.Position = UDim2.new(0.3,0,0.35)
+ TextLabelFrame2.Size = UDim2.new(0.4,0,0.4)
+ TextLabelFrame2.Active = true
+ TextLabelFrame2.Draggable = false
+
+ TextLabelUICorner.CornerRadius = UDim.new(0.1, 0)
+ TextLabelUICorner.Parent = TextLabelFrame2
+
+ TextLabelLine.Parent = TextLabelFrame2
+ TextLabelLine.BackgroundColor3 = Color3.new(0,0,0)
+ TextLabelLine.BorderColor3 = Color3.new(1,1,1)
+ TextLabelLine.BorderSizePixel = 2
+ TextLabelLine.Position = UDim2.new(0.1,0,0.26)
+ TextLabelLine.Size = UDim2.new(0.78,0,0.0000001)
+ TextLabelLine.Active = true
+
+ TextLabelTitle.Parent = TextLabelFrame2
+ TextLabelTitle.BackgroundColor3 = Color3.fromRGB(35,35,35)
+ TextLabelTitle.BackgroundTransparency = 1
+ TextLabelTitle.Position = UDim2.new(0.1,0,0.05)
+ TextLabelTitle.Text = "Load Accessories"
+ TextLabelTitle.TextColor3 = Color3.new(1,1,1)
+ TextLabelTitle.Size = UDim2.new(0.8,0,0.15)
+ TextLabelTitle.FontSize = Enum.FontSize.Size14
+ TextLabelTitle.TextScaled = false
+ TextLabelTitle.TextSize = 16
+ TextLabelTitle.TextWrapped = true
+ 
+ TextLabelTextBox.Parent = TextLabelFrame2
+ TextLabelTextBox.BackgroundColor3 = Color3.new(1,1,1)
+ TextLabelTextBox.BackgroundTransparency = 1
+ TextLabelTextBox.Position = UDim2.new(0.1,0,0.37)
+ TextLabelTextBox.Text = "Are you sure do you want to\nload your saved accessories?"
+ TextLabelTextBox.TextColor3 = Color3.new(1,1,1)
+ TextLabelTextBox.Size = UDim2.new(0.79,0,0.25)
+ TextLabelTextBox.FontSize = Enum.FontSize.Size14
+ TextLabelTextBox.TextScaled = true
+ TextLabelTextBox.TextSize = 8
+ TextLabelTextBox.TextWrapped = true
+
+ TextLabelButton1.Parent = TextLabelFrame2
+ TextLabelButton1.BackgroundColor3 = Color3.new(1,1,1)
+ TextLabelButton1.BackgroundTransparency = 0
+ TextLabelButton1.Position = UDim2.new(0.1,0,0.7)
+ TextLabelButton1.Text = "Cancel"
+ TextLabelButton1.TextColor3 = Color3.new(0,0,0)
+ TextLabelButton1.Size = UDim2.new(0.37,0,0.2)
+ TextLabelButton1.FontSize = Enum.FontSize.Size14
+ TextLabelButton1.TextScaled = true
+ TextLabelButton1.TextSize = 8
+ TextLabelButton1.TextWrapped = true
+
+ TextLabelButton2.Parent = TextLabelFrame2
+ TextLabelButton2.BackgroundColor3 = Color3.new(1,1,1)
+ TextLabelButton2.BackgroundTransparency = 0
+ TextLabelButton2.Position = UDim2.new(0.52,0,0.7)
+ TextLabelButton2.Text = "Load"
+ TextLabelButton2.TextColor3 = Color3.new(0,0,0)
+ TextLabelButton2.Size = UDim2.new(0.37,0,0.2)
+ TextLabelButton2.FontSize = Enum.FontSize.Size14
+ TextLabelButton2.TextScaled = true
+ TextLabelButton2.TextSize = 8
+ TextLabelButton2.TextWrapped = true
+
+ TextLabelButton1.MouseButton1Click:connect(function()
+ TextLabelGui:Destroy()
+ end)
+
+ TextLabelButton2.MouseButton1Click:connect(function()
+ TextLabelGui:Destroy()
+ Current_Button_PositionZ = 0
+ ScrollingFrame1:ClearAllChildren()
+ DeleteButton.Visible = false
+ Frame2.Visible = false
+ Selected = nil
+ AccessoriesData = {}
+ if game.Players.LocalPlayer.Character:FindFirstChild("Free Accessories") then
+    game.Players.LocalPlayer.Character:FindFirstChild("Free Accessories"):Destroy()
+ end
+ LoadSavedAccessories()
+ RequestToastMessage("Accessories Successfully Loaded!")
+ DeleteButton.Visible = false
+ Frame2.Visible = false
+ end)
+end
+---
+
+
+
+
+
+---Add Accessory Dialog Function
+local function DestroyGuiDialog()
+ local TextLabelGui = Instance.new("ScreenGui")
+ local TextLabelFrame = Instance.new("Frame")
+ local TextLabelFrame2 = Instance.new("Frame")
+ local TextLabelLine = Instance.new("Frame")
+ local TextLabelTitle = Instance.new("TextLabel")
+ local TextLabelButton1 = Instance.new("TextButton")
+ local TextLabelButton2 = Instance.new("TextButton")
+ local TextLabelTextBox = Instance.new("TextLabel")
+ local TextLabelUICorner = Instance.new("UICorner")
+
+ TextLabelGui.Parent = game.CoreGui
+
+ TextLabelFrame.Parent = TextLabelGui
+ TextLabelFrame.BackgroundColor3 = Color3.new(0,0,0)
+ TextLabelFrame.Transparency = 0.5
+ TextLabelFrame.BorderColor3 = Color3.new(1,1,1)
+ TextLabelFrame.BorderSizePixel = 0
+ TextLabelFrame.Position = UDim2.new(0,0,-0.2)
+ TextLabelFrame.Size = UDim2.new(1,0,1.2)
+ TextLabelFrame.Active = true
+ TextLabelFrame.Draggable = false
+
+ TextLabelFrame2.Parent = TextLabelFrame
+ TextLabelFrame2.BackgroundColor3 = Color3.fromRGB(35,35,35)
+ TextLabelFrame2.BorderColor3 = Color3.new(1,1,1)
+ TextLabelFrame2.BorderSizePixel = 0
+ TextLabelFrame2.Position = UDim2.new(0.3,0,0.35)
+ TextLabelFrame2.Size = UDim2.new(0.4,0,0.4)
+ TextLabelFrame2.Active = true
+ TextLabelFrame2.Draggable = false
+
+ TextLabelUICorner.CornerRadius = UDim.new(0.1, 0)
+ TextLabelUICorner.Parent = TextLabelFrame2
+
+ TextLabelLine.Parent = TextLabelFrame2
+ TextLabelLine.BackgroundColor3 = Color3.new(0,0,0)
+ TextLabelLine.BorderColor3 = Color3.new(1,1,1)
+ TextLabelLine.BorderSizePixel = 2
+ TextLabelLine.Position = UDim2.new(0.1,0,0.26)
+ TextLabelLine.Size = UDim2.new(0.78,0,0.0000001)
+ TextLabelLine.Active = true
+
+ TextLabelTitle.Parent = TextLabelFrame2
+ TextLabelTitle.BackgroundColor3 = Color3.fromRGB(35,35,35)
+ TextLabelTitle.BackgroundTransparency = 1
+ TextLabelTitle.Position = UDim2.new(0.1,0,0.05)
+ TextLabelTitle.Text = "Destroy Gui"
+ TextLabelTitle.TextColor3 = Color3.new(1,1,1)
+ TextLabelTitle.Size = UDim2.new(0.8,0,0.15)
+ TextLabelTitle.FontSize = Enum.FontSize.Size14
+ TextLabelTitle.TextScaled = false
+ TextLabelTitle.TextSize = 16
+ TextLabelTitle.TextWrapped = true
+ 
+ TextLabelTextBox.Parent = TextLabelFrame2
+ TextLabelTextBox.BackgroundColor3 = Color3.new(1,1,1)
+ TextLabelTextBox.BackgroundTransparency = 1
+ TextLabelTextBox.Position = UDim2.new(0.1,0,0.37)
+ TextLabelTextBox.Text = "Are you sure do you want to\ndestroy this gui?"
+ TextLabelTextBox.TextColor3 = Color3.new(1,1,1)
+ TextLabelTextBox.Size = UDim2.new(0.79,0,0.25)
+ TextLabelTextBox.FontSize = Enum.FontSize.Size14
+ TextLabelTextBox.TextScaled = true
+ TextLabelTextBox.TextSize = 8
+ TextLabelTextBox.TextWrapped = true
+
+ TextLabelButton1.Parent = TextLabelFrame2
+ TextLabelButton1.BackgroundColor3 = Color3.new(1,1,1)
+ TextLabelButton1.BackgroundTransparency = 0
+ TextLabelButton1.Position = UDim2.new(0.1,0,0.7)
+ TextLabelButton1.Text = "Cancel"
+ TextLabelButton1.TextColor3 = Color3.new(0,0,0)
+ TextLabelButton1.Size = UDim2.new(0.37,0,0.2)
+ TextLabelButton1.FontSize = Enum.FontSize.Size14
+ TextLabelButton1.TextScaled = true
+ TextLabelButton1.TextSize = 8
+ TextLabelButton1.TextWrapped = true
+
+ TextLabelButton2.Parent = TextLabelFrame2
+ TextLabelButton2.BackgroundColor3 = Color3.new(1,1,1)
+ TextLabelButton2.BackgroundTransparency = 0
+ TextLabelButton2.Position = UDim2.new(0.52,0,0.7)
+ TextLabelButton2.Text = "Destroy"
+ TextLabelButton2.TextColor3 = Color3.new(0,0,0)
+ TextLabelButton2.Size = UDim2.new(0.37,0,0.2)
+ TextLabelButton2.FontSize = Enum.FontSize.Size14
+ TextLabelButton2.TextScaled = true
+ TextLabelButton2.TextSize = 8
+ TextLabelButton2.TextWrapped = true
+
+ TextLabelButton1.MouseButton1Click:connect(function()
+ TextLabelGui:Destroy()
+ end)
+
+ TextLabelButton2.MouseButton1Click:connect(function()
+ TextLabelGui:Destroy()
+ ScreenGui1:Destroy()
+ end)
+end
+---
+
+
+
+
+
+TextButton3.MouseButton1Click:Connect(function()
+Selected.Mesh.Weld.C0 = Selected.Mesh.Weld.C0 * CFrame.Angles(math.rad(5),math.rad(0),math.rad(0))
+AccessoriesData[tonumber(Selected.AssetID.Value)]["Angle"] = Selected.Mesh.Weld.C0
+end)
+
+TextButton4.MouseButton1Click:Connect(function()
+Selected.Mesh.Weld.C0 = Selected.Mesh.Weld.C0 * CFrame.Angles(math.rad(0),math.rad(5),math.rad(0))
+AccessoriesData[tonumber(Selected.AssetID.Value)]["Angle"] = Selected.Mesh.Weld.C0
+end)
+
+TextButton5.MouseButton1Click:Connect(function()
+Selected.Mesh.Weld.C0 = Selected.Mesh.Weld.C0 * CFrame.Angles(math.rad(0),math.rad(0),math.rad(5))
+AccessoriesData[tonumber(Selected.AssetID.Value)]["Angle"] = Selected.Mesh.Weld.C0
+end)
+
+TextButton6.MouseButton1Click:Connect(function()
+Selected.Mesh.Weld.C1 = Selected.Mesh.Weld.C1 * CFrame.new(0,-0.05,0)
+AccessoriesData[tonumber(Selected.AssetID.Value)]["CFrame"] = Selected.Mesh.Weld.C1
+end)
+
+TextButton7.MouseButton1Click:Connect(function()
+Selected.Mesh.Weld.C1 = Selected.Mesh.Weld.C1 * CFrame.new(0,0.05,0)
+AccessoriesData[tonumber(Selected.AssetID.Value)]["CFrame"] = Selected.Mesh.Weld.C1
+end)
+
+
+TextButton8.MouseButton1Click:Connect(function()
+Selected.Mesh.Weld.C1 = Selected.Mesh.Weld.C1 * CFrame.new(0,0,-0.05)
+AccessoriesData[tonumber(Selected.AssetID.Value)]["CFrame"] = Selected.Mesh.Weld.C1
+end)
+
+TextButton9.MouseButton1Click:Connect(function()
+Selected.Mesh.Weld.C1 = Selected.Mesh.Weld.C1 * CFrame.new(0,0,0.05)
+AccessoriesData[tonumber(Selected.AssetID.Value)]["CFrame"] = Selected.Mesh.Weld.C1
+end)
+
+TextButton10.MouseButton1Click:Connect(function()
+Selected.Mesh.Weld.C1 = Selected.Mesh.Weld.C1 * CFrame.new(-0.05,0,0)
+AccessoriesData[tonumber(Selected.AssetID.Value)]["CFrame"] = Selected.Mesh.Weld.C1
+end)
+
+TextButton11.MouseButton1Click:Connect(function()
+Selected.Mesh.Weld.C1 = Selected.Mesh.Weld.C1 * CFrame.new(0.05,0,0)
+AccessoriesData[tonumber(Selected.AssetID.Value)]["CFrame"] = Selected.Mesh.Weld.C1
+end)
+
+PlusButton.MouseButton1Click:Connect(function()
+if PlusButton.Active == true then
+   PlusButton.Active = false
+   local button_num = 0
+   for key, value in pairs(ScrollingFrame1:GetChildren()) do
+     button_num += 1
+   end
+   if button_num == 20 or button_num >= 20 then
+      RequestToastMessage("Accessories Slot Max!")
+      PlusButton.Active = true
+   else
+      AddAccesoryDialog()
+   end
+end
+end)
+
+DeleteButton.MouseButton1Click:Connect(function()
+DeleteAccessory()
+end)
+
+TextButton1.MouseButton1Click:Connect(function()
+if FileScript == true then
+   local button_num = 0
+   for key, value in pairs(ScrollingFrame1:GetChildren()) do
+     button_num += 1
+   end
+   if button_num == 0 then
+      RequestToastMessage("Empty Accessory")
+      PlusButton.Active = true
+   else
+      SaveAccessoryDialog()
+   end
+else
+   RequestToastMessage("⚠️ Sorry Your Executor Is Doesn't This Feature!", 4)
+end
+end)
+
+TextButton2.MouseButton1Click:Connect(function()
+if FileScript == true then
+   if isfile("Saved Accessories.json") then
+      LoadAccessoryDialog()
+   else
+      RequestToastMessage("You Don't Have Saved Accessories")
+   end
+else
+   RequestToastMessage("⚠️ Sorry Your Executor Is Doesn't This Feature!", 4)
+end
+end)
+
+DestroyGui.MouseButton1Click:Connect(function()
+DestroyGuiDialog()
+end)
