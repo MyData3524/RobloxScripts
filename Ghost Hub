@@ -1146,7 +1146,7 @@ function AddGhostScript2()
  AddButton("Face Changer","0.18","0.69","loadstring(game:HttpGet('https://raw.githubusercontent.com/GhostPlayer352/Test4/main/Face%20Changer'))()")
  AddButton("Modifer Gui","0.33","0.69","loadstring(game:HttpGet('https://raw.githubusercontent.com/GhostPlayer352/Test4/main/Modifier%20Gui'))()")
  AddButton("Player Death Notification","0.48","0.69","loadstring(game:HttpGet('https://raw.githubusercontent.com/GhostPlayer352/Test4/main/Player%20Death%20Notification'))()")
- AddButton("Hide Players","0.63","0.69","loadstring(game:HttpGet('https://raw.githubusercontent.com/GhostPlayer352/Test4/main/Hide%20Players'))()")
+ AddButton("Accessories Gui","0.63","0.69","loadstring(game:HttpGet('https://raw.githubusercontent.com/GhostPlayer352/Test4/refs/heads/main/Accessories%20Gui'))()")
  AddButton("Void","0.78","0.69","loadstring(game:HttpGet('https://raw.githubusercontent.com/GhostPlayer352/Test4/main/Void'))()")
  AddPageButton("2","FrameContent:ClearAllChildren() AddGhostScript3()")
 end
