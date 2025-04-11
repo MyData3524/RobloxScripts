@@ -321,6 +321,14 @@ end
 ---
 
 
+---Auto Load Saved Accessories Operator
+--AutoLoadSavedAccessories = true --use this to auto load your saved accessories without showing the gui
+if AutoLoadSavedAccessories ~= nil and AutoLoadSavedAccessories == true then
+   Frame1.Visible = false
+   LoadSavedAccessories()
+   RequestToastMessage("Accessories Successfully Loaded!")
+end
+---
 
 
 
