@@ -1602,7 +1602,7 @@ end
 end)
 
 Credits1.MouseButton1Click:connect(function()
-setclipboard("https://www.roblox.com/users/2568780515/profile")
+setclipboard("https://www.roblox.com/users/5347040425/profile")
 RequestMessage("Script","Link Copied")
 end)
 
