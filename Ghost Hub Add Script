@@ -262,7 +262,7 @@ local function CheckDupeScript(userId, script, date)
         end
       end
       local ratio = matches / maxLength
-      if ratio >= 0.8 then
+      if ratio >= 0.7 then
          print("Detected Script Similarity: "..math.floor(ratio * 100).."%")
          return true
       end
