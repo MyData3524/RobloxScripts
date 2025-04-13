@@ -4268,6 +4268,14 @@ function UpdateData()
  end
  ---
  
+ ---Remove data with Baned value
+ for key, value in pairs(data.Scripts) do
+   if IsRestricted(value["User_ID"]) == true or ScriptRestricted(value["Script"]) == true then
+      data.Scripts[key] = nil
+   end
+ end
+ ---
+ 
  ---Get MoreScripts Count
  local dataNumber = 0
  for i,v in pairs(data.Scripts) do
@@ -4319,10 +4327,8 @@ function GetMoreScript()
       if data.Scripts["Script"..MoreScripts] and data.Scripts["Script"..MoreScripts]["Script"] and data.Scripts["Script"..MoreScripts]["Description"] and data.Scripts["Script"..MoreScripts]["User_ID"] and data.Scripts["Script"..MoreScripts]["Username"] and data.Scripts["Script"..MoreScripts]["Date"] then
          local ScriptTitle = ""..data.Scripts["Script"..MoreScripts]["Script_Title"]
          if MoreScriptSearch.Text == "" or MoreScriptSearch.Text ~= "" and ScriptTitle.find(string.lower(ScriptTitle), string.lower(MoreScriptSearch.Text)) then
-            if IsRestricted(data.Scripts["Script"..MoreScripts]["User_ID"]) == false and ScriptRestricted(data.Scripts["Script"..MoreScripts]["Script"]) == false then
-               AddMoreScriptButton(MoreScripts, ScriptTitle, data.Scripts["Script"..MoreScripts]["Script"], data.Scripts["Script"..MoreScripts]["Description"], data.Scripts["Script"..MoreScripts]["User_ID"], data.Scripts["Script"..MoreScripts].Username, data.Scripts["Script"..MoreScripts].Date)
-               SlotUsed += 1
-            end
+            AddMoreScriptButton(MoreScripts, ScriptTitle, data.Scripts["Script"..MoreScripts]["Script"], data.Scripts["Script"..MoreScripts]["Description"], data.Scripts["Script"..MoreScripts]["User_ID"], data.Scripts["Script"..MoreScripts].Username, data.Scripts["Script"..MoreScripts].Date)
+            SlotUsed += 1
             MoreScripts -= 1
          elseif MoreScriptSearch.Text ~= "" and not ScriptTitle.find(string.lower(ScriptTitle), string.lower(MoreScriptSearch.Text)) then
             MoreScripts -= 1
