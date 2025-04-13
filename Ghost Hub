@@ -692,11 +692,8 @@ end
 
 ---Detect if the executor support get a file
 local FileScriptSupported = false
-local FileScript, IsSupported = pcall(function()
-makefolder("Ghosthub") --make folder to detect the executor support the filescript
-end)
 
-if FileScript then
+if writefile and readfile and isfile then
   FileScriptSupported = true
 else
   FileScriptSupported = false
@@ -709,19 +706,20 @@ end
 
 ---Get Saved Settings Data
 local ButtonTextSize = 12
-
 local SettingsData = {}
-if FileScriptSupported == true and isfile("Ghosthub/.settings") then
-   SettingsData = game:GetService("HttpService"):JSONDecode(readfile("Ghosthub/.settings"))
-   
-   if SettingsData["icon_size"] then
-      OpenGui.Size = UDim2.new(0, SettingsData["icon_size"] * 20, 0, SettingsData["icon_size"] * 17)
-   end
-   if SettingsData["gui_size"] then
-      Frame.Size = UDim2.new(0, SettingsData["gui_size"] * 117.8 + 117.8, 0, SettingsData["gui_size"] * 48.4 + 48.4)
-   end
-   if SettingsData["text_size"] then
-      ButtonTextSize = SettingsData["text_size"]
+
+if FileScriptSupported == true then
+   if isfile("Ghosthub/.settings") then
+      SettingsData = game:GetService("HttpService"):JSONDecode(readfile("Ghosthub/.settings"))
+      if SettingsData["icon_size"] then
+         OpenGui.Size = UDim2.new(0, SettingsData["icon_size"] * 20, 0, SettingsData["icon_size"] * 17)
+      end
+      if SettingsData["gui_size"] then
+         Frame.Size = UDim2.new(0, SettingsData["gui_size"] * 117.8 + 117.8, 0, SettingsData["gui_size"] * 48.4 + 48.4)
+      end
+      if SettingsData["text_size"] then
+         ButtonTextSize = SettingsData["text_size"]
+      end
    end
 end
 ---
@@ -950,7 +948,10 @@ Postal: "..Postal
  ---
 end
 ---
+
+pcall(function()
 ShowHome() --for starter content
+end)
 
 
 
@@ -1708,7 +1709,7 @@ Feedback_Padding2.PaddingBottom = UDim.new(0, 5)
 Feedback_Padding2.Parent = FeedbackPost
 
 FeedbackTextBox:GetPropertyChangedSignal("Text"):Connect(function()
-if #FeedbackTextBox.Text > 500 then
+if FeedbackTextBox.Text ~= "" and #FeedbackTextBox.Text > 500 then
    FeedbackTextBox.Text = string.sub(FeedbackTextBox.Text, 1, 500)
    RequestMessage("Script","Your Message is very long", "Message limit 500 characters!")
 end
@@ -2422,6 +2423,7 @@ end
 ---Post Shout in Ghosthub Shout Firebase Database Function
 local GhostHub_Shout_Database_URL = "https://ghosthub-shout-ccec9-default-rtdb.firebaseio.com/"
 local GhostHub_Shout_Database_Secret = "TqDzshgeNUnx6XCGYGgdLmjltjvPzt2SYmwY6lgT"
+
 local function PostShout(msg)
  local Folder = "Shout"
 
@@ -2453,7 +2455,6 @@ ShoutImage.Size = UDim2.new(0.13,0,0.3)
 ShoutImage.BorderColor3 = Color3.new(1,1,1)
 ShoutImage.BorderSizePixel = 1
 ShoutImage.Position = UDim2.new(0.03,0,0.06)
-ShoutImage.Image = ""
  
 local ShoutUICorner = Instance.new("UICorner")
 ShoutUICorner.CornerRadius = UDim.new(1, 0)
@@ -3342,7 +3343,7 @@ function ShowExecutor()
  
  ExecutorTextBox.Changed:Connect(function()
  ExecutorScriptText = ExecutorTextBox.Text
- if FileScriptSupported == true then
+ if FileScriptSupported == true and ExecutorTextBox.Text ~= "" then
     writefile("Ghosthub/ExecutorText.txt", ExecutorTextBox.Text)
  end
  end)
