@@ -1408,6 +1408,7 @@ AddGameHubButton("Words or Die",'loadstring(game:HttpGet("https://raw.githubuser
 AddGameHubButton("Math Murder",'loadstring(game:HttpGet("https://raw.githubusercontent.com/MyData3524/RobloxScripts/refs/heads/main/Math%20Murder"))()')
 AddGameHubButton("Jack Of Hearts",'loadstring(game:HttpGet("https://raw.githubusercontent.com/MyData3524/RobloxScripts/refs/heads/main/Jack%20Of%20Hearts"))()')
 AddGameHubButton("Dodgeball Legends",'loadstring(game:HttpGet("https://raw.githubusercontent.com/MyData3524/RobloxScripts/refs/heads/main/Dodgeball%20Legends"))()')
+AddGameHubButton("Memory Murder",'loadstring(game:HttpGet("https://raw.githubusercontent.com/GhostPlayer352/Test4/refs/heads/main/Memory%20Murder"))()')
 ---
 
 
