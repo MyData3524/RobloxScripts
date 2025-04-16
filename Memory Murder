@@ -147,6 +147,14 @@ end
 end)
 
 AddContent("TextButton", "Get VIP Rank", [[
+local CoreGui = game:GetService("StarterGui")
+
+CoreGui:SetCore("SendNotification", {
+    Title = "VIP Ranker Made By",
+    Text = "Github user: rndmq",
+    Duration = 10,
+    Button1 = "Okay",
+})
 loadstring(game:HttpGet("https://raw.githubusercontent.com/rndmq/Serverlist/refs/heads/main/Server65"))()
 ]])
 ---
