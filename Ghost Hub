@@ -838,7 +838,7 @@ Postal: "..Postal
  Clicks.Parent = ClicksFrame
  Clicks.Position = UDim2.new(0.7,0,0)
  Clicks.Size = UDim2.new(0.3,0,0.1)
- Clicks.Text = "Clicks"
+ Clicks.Text = "Execute"
  
  local LeaderboardScrolling = Instance.new("ScrollingFrame")
  LeaderboardScrolling.Parent = ClicksFrame
@@ -891,7 +891,7 @@ Postal: "..Postal
     TotalClicks.Position = UDim2.new(0.65,0,0.6)
     TotalClicks.Size = UDim2.new(0.3,0,0.07)
     TotalClicks.TextYAlignment = Enum.TextYAlignment.Top
-    TotalClicks.Text = "Total Clicks Starts From December 9 2024"
+    TotalClicks.Text = "Total Execute Starts From December 9 2024"
     TotalClicks.TextSize = 12
     TotalClicks.TextScaled = false
     
