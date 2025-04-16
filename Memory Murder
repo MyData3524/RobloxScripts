@@ -1,0 +1,152 @@
+--[[ Place ID With Dialog2 Detect Method
+CheckGamePlace(7981626683) --use this to check the gameplace is right
+]]
+loadstring(game:HttpGet('https://raw.githubusercontent.com/MainScripts352/MainScripts352/refs/heads/main/Check Game PlaceId Source'))()
+CheckGamePlace(96384896875593)
+--
+
+local NotificationScript, isSupported = pcall(function()
+local CoreGui = game:GetService("StarterGui")
+
+CoreGui:SetCore("SendNotification", {
+    Title = "Script Made By",
+    Text = "GhostPlayer",
+    Icon = "rbxassetid://29819383",
+    Duration = 2.5,
+})
+end)
+
+
+---Admin Detector in Server
+loadstring(game:HttpGet('https://raw.githubusercontent.com/MainScripts352/MainScripts352/main/Admin'))()
+---
+
+
+
+---Auto Fill Operator
+AutoHelper = false
+AutoFill = false
+AutoFillSpeed = 0
+
+local AutoFillBetterLoopOperator = false
+local SlotTable = {}
+game:GetService("RunService").RenderStepped:Connect(function()
+if AutoFillBetterLoopOperator == false then
+   AutoFillBetterLoopOperator = true
+   if workspace.Billboard.gui.frame.main.FrameText.Text == "Memorize this pattern!" then
+      SlotTable = {}
+      for i,v in pairs(workspace.Billboard.gui.frame.main.Frame:GetDescendants()) do
+        if v.ClassName == "TextButton" and v.BackgroundColor3 == Color3.fromRGB(0, 255, 0) then
+           table.insert(SlotTable, v.Name)
+        end
+      end
+      repeat
+        task.wait()
+      until workspace.Billboard.gui.frame.main.FrameText.Text ~= "Memorize this pattern!" and workspace.Billboard.gui.frame.main.FrameText.Text ~= ""
+   end
+   if game:GetService("Players").LocalPlayer.PlayerGui.answerUI.MemoryBoard.Visible == true then
+      if next(SlotTable) ~= nil then
+         if workspace.Billboard.gui.frame.main.FrameText.Text == game.Players.LocalPlayer.Name.."'s pattern:" or workspace.Billboard.gui.frame.main.FrameText.Text == game.Players.LocalPlayer.DisplayName.."'s pattern:" then
+            for key, value in pairs(SlotTable) do
+              for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.answerUI.MemoryBoard:GetDescendants()) do
+                if v.ClassName == "TextButton" and v.Name == value and v.BackgroundColor3 ~= Color3.fromRGB(0, 255, 0) then
+                   if AutoHelper == true then
+                      v.BackgroundColor3 = Color3.new(0,0,250)
+                   else
+                      if v.BackgroundColor3 == Color3.new(0,0,250) then
+                         v.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+                      end
+                   end
+                end
+              end
+            end
+            if AutoFill == true then
+               for key, value in pairs(SlotTable) do
+                 for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.answerUI.MemoryBoard:GetDescendants()) do
+                   if v.ClassName == "TextButton" then
+                      if v.BackgroundColor3 == Color3.new(0,0,250) then
+                         v.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+                      end
+                      if v.Name ~= value and v.BackgroundColor3 == Color3.fromRGB(0, 255, 0) then
+                         pcall(function()
+                         for _, connection in pairs(getconnections(v.MouseButton1Click)) do
+                           connection.Function()
+                         end
+                         end)
+                      end
+                   end
+                 end
+               end
+               for key, value in pairs(SlotTable) do
+                 for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.answerUI.MemoryBoard:GetDescendants()) do
+                   if v.ClassName == "TextButton" then
+                      if v.Name == value and v.BackgroundColor3 == Color3.fromRGB(255, 0, 0) then
+                         if string.match(AutoFillSpeed, "^%d+%.?%d*$") ~= nil then
+                            task.wait(AutoFillSpeed)
+                            if AutoFill == false then
+                               break
+                            end
+                         end
+                         pcall(function()
+                         for _, connection in pairs(getconnections(v.MouseButton1Click)) do
+                           connection.Function()
+                         end
+                         end)
+                      end
+                   end
+                 end
+               end
+            end
+         end
+      end
+   end
+   AutoFillBetterLoopOperator = false
+end
+end)
+---
+
+
+
+
+---Ghost Gui UI Library
+loadstring(game:HttpGet('https://raw.githubusercontent.com/GhostPlayer352/UI-Library/refs/heads/main/Ghost%20Gui'))()
+game.CoreGui.GhostGui.MainFrame.Title.Text = "Memory Murder"
+---
+
+
+
+AddContent("Switch", "Auto Helper", [[
+AutoHelper = true
+]],[[
+AutoHelper = false
+]])
+
+
+AddContent("Switch", "Auto Fill", [[
+AutoFill = true
+]],[[
+AutoFill = false
+]])
+
+local TextBox = AddContent("TextBox","Auto Fill Speed")
+TextBox.Text = 0
+TextBox:GetPropertyChangedSignal("Text"):Connect(function()
+AutoFillSpeed = TextBox.Text
+end)
+
+
+
+---Script Not Mine
+game:GetService("RunService").RenderStepped:Connect(function()
+if game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("teller") then
+   game:GetService("Players").LocalPlayer.PlayerGui.teller:Destroy()
+end
+if game:GetService("CoreGui"):FindFirstChild("CustomNotification") then
+   game:GetService("CoreGui").CustomNotification:Destroy()
+end
+end)
+
+AddContent("TextButton", "Get VIP Rank", [[
+loadstring(game:HttpGet("https://raw.githubusercontent.com/rndmq/Serverlist/refs/heads/main/Server65"))()
+]])
+---
